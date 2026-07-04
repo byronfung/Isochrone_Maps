@@ -4,6 +4,8 @@ import json
 import math
 import os
 from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -11,6 +13,11 @@ import pandas as pd
 import pydeck as pdk
 import streamlit as st
 
+
+BASE_DIR = Path(__file__).resolve().parent
+CACHE_DIR = BASE_DIR / "cache"
+AIRPORT_CACHE_CSV = CACHE_DIR / "airports.csv"
+FLIGHT_ROUTE_CACHE_CSV = CACHE_DIR / "flight_routes.csv"
 
 TORONTO = {"name": "Toronto, ON", "lat": 43.6532, "lon": -79.3832}
 
@@ -739,6 +746,7 @@ def has_direct_service(origin_code: str, destination_code: str) -> bool:
     return frozenset((origin_code, destination_code)) in DIRECT_FLIGHT_PAIRS
 
 
+@lru_cache(maxsize=None)
 def airport_distance_km(origin_code: str, destination_code: str) -> float:
     origin_airport = AIRPORTS[origin_code]
     destination_airport = AIRPORTS[destination_code]
@@ -754,6 +762,7 @@ def flight_block_hours(distance_km: float) -> float:
     return max(0.55, distance_km / 820)
 
 
+@lru_cache(maxsize=None)
 def best_connection_hub(origin_code: str, destination_code: str) -> tuple[str, dict[str, object], float] | None:
     candidates = []
 
@@ -776,7 +785,8 @@ def best_connection_hub(origin_code: str, destination_code: str) -> tuple[str, d
     return min(candidates, key=lambda item: item[2])
 
 
-def flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[bool, str | None, float]:
+@lru_cache(maxsize=None)
+def _compute_flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[bool, str | None, float]:
     terminal_hours = 1.0
     connection_hours = 1.2
 
@@ -797,18 +807,157 @@ def flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[boo
     return False, hub_code, total_hours
 
 
+def compute_airport_table() -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "code": code,
+            "name": airport["name"],
+            "lat": airport["lat"],
+            "lon": airport["lon"],
+            "remote": airport["remote"],
+            "direct_airport": code in DIRECT_AIRPORTS,
+            "direct_service_hub": code in DIRECT_SERVICE_HUBS,
+        }
+        for code, airport in sorted(AIRPORTS.items())
+    )
+
+
+def compute_flight_route_table() -> pd.DataFrame:
+    rows = []
+
+    for origin_code, origin_airport in AIRPORTS.items():
+        for destination_code, destination_airport in AIRPORTS.items():
+            direct_service, hub_code, flight_hours = _compute_flight_itinerary_hours(
+                origin_code,
+                destination_code,
+            )
+            if not math.isfinite(flight_hours):
+                continue
+
+            rows.append(
+                {
+                    "origin_code": origin_code,
+                    "origin_name": origin_airport["name"],
+                    "destination_code": destination_code,
+                    "destination_name": destination_airport["name"],
+                    "direct_service": direct_service,
+                    "hub_code": hub_code or "",
+                    "flight_hours": flight_hours,
+                    "airport_distance_km": 0
+                    if origin_code == destination_code
+                    else airport_distance_km(origin_code, destination_code),
+                    "itinerary_type": "same airport"
+                    if origin_code == destination_code
+                    else "direct"
+                    if direct_service
+                    else "connecting",
+                }
+            )
+
+    return pd.DataFrame(rows)
+
+
+@st.cache_data(show_spinner=False)
+def load_cached_flight_route_table(csv_path: str, routing_model_version: str) -> pd.DataFrame:
+    _ = routing_model_version
+    route_table = pd.read_csv(csv_path, keep_default_na=False)
+    if route_table["direct_service"].dtype != bool:
+        route_table["direct_service"] = route_table["direct_service"].map(
+            lambda value: str(value).strip().casefold() == "true"
+        )
+    route_table["flight_hours"] = route_table["flight_hours"].astype(float)
+    route_table["airport_distance_km"] = route_table["airport_distance_km"].astype(float)
+    return route_table
+
+
+@st.cache_data(show_spinner=False)
+def build_flight_route_table(routing_model_version: str) -> pd.DataFrame:
+    if FLIGHT_ROUTE_CACHE_CSV.exists():
+        return load_cached_flight_route_table(str(FLIGHT_ROUTE_CACHE_CSV), routing_model_version)
+
+    _ = routing_model_version
+    return compute_flight_route_table()
+
+
+@lru_cache(maxsize=8)
+def flight_route_index(routing_model_version: str) -> dict[tuple[str, str], tuple[bool, str | None, float]]:
+    route_table = build_flight_route_table(routing_model_version)
+    return {
+        (row.origin_code, row.destination_code): (
+            bool(row.direct_service),
+            str(row.hub_code) or None,
+            float(row.flight_hours),
+        )
+        for row in route_table.itertuples(index=False)
+    }
+
+
+@lru_cache(maxsize=None)
+def origin_airport_route_options(origin_code: str, routing_model_version: str) -> dict[str, tuple[bool, str | None, float]]:
+    return {
+        destination_code: route
+        for (cached_origin_code, destination_code), route in flight_route_index(routing_model_version).items()
+        if cached_origin_code == origin_code
+    }
+
+
+def flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[bool, str | None, float]:
+    return flight_route_index(ROUTING_MODEL_VERSION).get(
+        (origin_code, destination_code),
+        (False, None, float("inf")),
+    )
+
+
+@lru_cache(maxsize=250000)
+def sorted_airport_access_candidates(lat: float, lon: float) -> tuple[tuple[str, float], ...]:
+    return tuple(
+        sorted(
+            (
+                (
+                    destination_code,
+                    haversine_km(lat, lon, destination_airport["lat"], destination_airport["lon"]),
+                )
+                for destination_code, destination_airport in AIRPORTS.items()
+            ),
+            key=lambda item: item[1],
+        )
+    )
+
+
+def destination_airport_candidates(
+    lat: float,
+    lon: float,
+    direct_distance_km: float,
+) -> list[tuple[str, dict[str, object], float]]:
+    candidates = [
+        (
+            destination_code,
+            AIRPORTS[destination_code],
+            destination_access_km,
+        )
+        for destination_code, destination_access_km in sorted_airport_access_candidates(round(lat, 4), round(lon, 4))
+    ]
+    if direct_distance_km < 420:
+        return [candidate for candidate in candidates if candidate[2] <= 140][:10]
+    return candidates[:16 if lat >= 58 else 12]
+
+
 def best_air_route(origin: Place, lat: float, lon: float, direct_distance_km: float) -> AirRouteCandidate | None:
     origin_code, origin_airport, origin_access_km = nearest_airport(origin.lat, origin.lon, prefer_hub=True)
     origin_access_hours = airport_access_hours(origin_access_km, origin.lat)
+    origin_routes = origin_airport_route_options(origin_code, ROUTING_MODEL_VERSION)
     candidates: list[AirRouteCandidate] = []
 
-    for destination_code, destination_airport in AIRPORTS.items():
-        destination_access_km = haversine_km(lat, lon, destination_airport["lat"], destination_airport["lon"])
+    for destination_code, destination_airport, destination_access_km in destination_airport_candidates(
+        lat,
+        lon,
+        direct_distance_km,
+    ):
         if direct_distance_km < 420 and destination_access_km > 70:
             continue
 
         destination_access_hours = destination_ground_hours(destination_access_km, lat)
-        direct_service, hub_code, flight_hours = flight_itinerary_hours(origin_code, destination_code)
+        direct_service, hub_code, flight_hours = origin_routes.get(destination_code, (False, None, float("inf")))
         if not math.isfinite(flight_hours):
             continue
 
