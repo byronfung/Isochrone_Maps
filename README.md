@@ -1,6 +1,8 @@
 # Canada Isochronic Passage Chart
 
-Streamlit app for a Canada-wide isochronic passage chart inspired by Francis Galton's 1881 travel-time map. The default origin is Toronto.
+Streamlit app for a Canada-wide isochronic passage chart inspired by Francis Galton's 1881 travel-time map, using OpenStreetMap. The default origin is Toronto.
+
+The app is published to https://isochronemaps-t38p9msumyvncyqearggv7.streamlit.app/
 
 ## Run
 
