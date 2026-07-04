@@ -18,8 +18,12 @@ CANADIAN_LOCATIONS = {
     "Edmonton, AB": (53.5461, -113.4938),
     "Ottawa, ON": (45.4215, -75.6972),
     "Winnipeg, MB": (49.8951, -97.1384),
+    "Regina, SK": (50.4452, -104.6189),
+    "Banff, AB": (51.1784, -115.5708),
     "Quebec City, QC": (46.8139, -71.2080),
+    "Victoria, BC": (48.4284, -123.3656),
     "Halifax, NS": (44.6488, -63.5752),
+    "Moncton, NB": (46.0878, -64.7782),
     "St. John's, NL": (47.5615, -52.7126),
     "Yellowknife, NT": (62.4540, -114.3718),
     "Whitehorse, YT": (60.7212, -135.0568),
@@ -34,15 +38,32 @@ AIRPORTS = {
     "YEG": {"name": "Edmonton", "lat": 53.3097, "lon": -113.5797, "remote": False},
     "YOW": {"name": "Ottawa", "lat": 45.3225, "lon": -75.6692, "remote": False},
     "YWG": {"name": "Winnipeg", "lat": 49.9099, "lon": -97.2399, "remote": False},
+    "YQR": {"name": "Regina", "lat": 50.4319, "lon": -104.6658, "remote": False},
     "YQB": {"name": "Quebec City", "lat": 46.7911, "lon": -71.3933, "remote": False},
+    "YYJ": {"name": "Victoria", "lat": 48.6469, "lon": -123.4258, "remote": False},
     "YHZ": {"name": "Halifax", "lat": 44.8808, "lon": -63.5086, "remote": False},
+    "YQM": {"name": "Moncton", "lat": 46.1122, "lon": -64.6786, "remote": False},
     "YYT": {"name": "St. John's", "lat": 47.6186, "lon": -52.7519, "remote": False},
     "YZF": {"name": "Yellowknife", "lat": 62.4628, "lon": -114.4403, "remote": True},
     "YXY": {"name": "Whitehorse", "lat": 60.7096, "lon": -135.0673, "remote": True},
     "YFB": {"name": "Iqaluit", "lat": 63.7564, "lon": -68.5558, "remote": True},
 }
 
-DIRECT_AIRPORTS = {"YYZ", "YUL", "YVR", "YYC", "YEG", "YOW", "YWG", "YQB", "YHZ", "YYT"}
+DIRECT_AIRPORTS = {
+    "YYZ",
+    "YUL",
+    "YVR",
+    "YYC",
+    "YEG",
+    "YOW",
+    "YWG",
+    "YQR",
+    "YQB",
+    "YYJ",
+    "YHZ",
+    "YQM",
+    "YYT",
+}
 
 CANADA_BOUNDS = {
     "min_lat": 41.0,
@@ -141,6 +162,26 @@ class TravelEstimate:
     distance_km: float
 
 
+@dataclass(frozen=True)
+class RouteLeg:
+    mode: str
+    start_name: str
+    end_name: str
+    hours: float
+    distance_km: float
+    path: list[list[float]]
+    color: list[int]
+
+
+@dataclass(frozen=True)
+class RoutePlan:
+    destination: Place
+    total_hours: float
+    total_distance_km: float
+    mode: str
+    legs: list[RouteLeg]
+
+
 def point_in_polygon(lon: float, lat: float, polygon: list[tuple[float, float]]) -> bool:
     inside = False
     previous_lon, previous_lat = polygon[-1]
@@ -237,6 +278,14 @@ def airport_access_hours(distance_km: float, lat: float) -> float:
     return 0.65 + distance_km / 65
 
 
+def destination_ground_hours(distance_km: float, lat: float) -> float:
+    if distance_km <= 35:
+        return 0.35 + distance_km / 70
+    if lat >= 58:
+        return 0.8 + distance_km / 45
+    return 0.25 + distance_km / 80
+
+
 def air_travel_candidate(origin: Place, lat: float, lon: float, direct_distance_km: float) -> tuple[str, float] | None:
     origin_code, origin_airport, origin_access_km = nearest_airport(origin.lat, origin.lon)
     destination_code, destination_airport, destination_access_km = nearest_airport(lat, lon)
@@ -254,14 +303,14 @@ def air_travel_candidate(origin: Place, lat: float, lon: float, direct_distance_
         destination_airport["lon"],
     )
     origin_access_hours = airport_access_hours(origin_access_km, origin.lat)
-    destination_access_hours = airport_access_hours(destination_access_km, lat)
+    destination_access_hours = destination_ground_hours(destination_access_km, lat)
     direct_service = origin_code in DIRECT_AIRPORTS and destination_code in DIRECT_AIRPORTS
     connection_hours = 0.0 if direct_service else 1.35
     terminal_hours = 1.0 if direct_service else 1.25
     flight_hours = airport_distance_km / 820
     total_hours = terminal_hours + origin_access_hours + flight_hours + connection_hours + destination_access_hours
 
-    if destination_airport["remote"] or destination_access_km > 100 or lat >= 58:
+    if destination_airport["remote"] or destination_access_km > 180 or lat >= 58:
         mode = "Air + remote access"
     elif direct_service:
         mode = "Direct flight + ground"
@@ -293,6 +342,108 @@ def estimate_travel(origin: Place, lat: float, lon: float) -> TravelEstimate:
 
     mode, hours = min(candidates, key=lambda item: item[1])
     return TravelEstimate(hours=hours, mode=mode, distance_km=distance_km)
+
+
+def route_path(start_lat: float, start_lon: float, end_lat: float, end_lon: float) -> list[list[float]]:
+    return [[start_lon, start_lat], [end_lon, end_lat]]
+
+
+def nearest_known_place(lat: float, lon: float, threshold_km: float = 60) -> str:
+    nearest_name = ""
+    nearest_distance = float("inf")
+
+    for name, coordinates in CANADIAN_LOCATIONS.items():
+        place_lat, place_lon = coordinates
+        distance = haversine_km(lat, lon, place_lat, place_lon)
+        if distance < nearest_distance:
+            nearest_name = name
+            nearest_distance = distance
+
+    if nearest_distance <= threshold_km:
+        return nearest_name
+    return f"Selected destination ({lat:.2f}, {lon:.2f})"
+
+
+def build_route_plan(origin: Place, destination: Place) -> RoutePlan:
+    estimate = estimate_travel(origin, destination.lat, destination.lon)
+    direct_distance_km = estimate.distance_km
+
+    if estimate.mode in {"Direct flight + ground", "Connecting flight + ground", "Air + remote access"}:
+        origin_code, origin_airport, origin_access_km = nearest_airport(origin.lat, origin.lon)
+        destination_code, destination_airport, destination_access_km = nearest_airport(destination.lat, destination.lon)
+        airport_distance_km = haversine_km(
+            origin_airport["lat"],
+            origin_airport["lon"],
+            destination_airport["lat"],
+            destination_airport["lon"],
+        )
+        direct_service = origin_code in DIRECT_AIRPORTS and destination_code in DIRECT_AIRPORTS
+        connection_hours = 0.0 if direct_service else 1.35
+        terminal_hours = 1.0 if direct_service else 1.25
+        origin_access_hours = airport_access_hours(origin_access_km, origin.lat)
+        destination_access_hours = destination_ground_hours(destination_access_km, destination.lat)
+        flight_hours = terminal_hours + connection_hours + airport_distance_km / 820
+
+        legs = [
+            RouteLeg(
+                mode="Ground access",
+                start_name=origin.name,
+                end_name=f"{origin_airport['name']} ({origin_code})",
+                hours=origin_access_hours,
+                distance_km=origin_access_km,
+                path=route_path(origin.lat, origin.lon, origin_airport["lat"], origin_airport["lon"]),
+                color=[88, 88, 88, 230],
+            ),
+            RouteLeg(
+                mode="Direct flight" if direct_service else "Connecting flight",
+                start_name=f"{origin_airport['name']} ({origin_code})",
+                end_name=f"{destination_airport['name']} ({destination_code})",
+                hours=flight_hours,
+                distance_km=airport_distance_km,
+                path=route_path(
+                    origin_airport["lat"],
+                    origin_airport["lon"],
+                    destination_airport["lat"],
+                    destination_airport["lon"],
+                ),
+                color=[0, 90, 181, 235] if direct_service else [116, 78, 166, 235],
+            ),
+            RouteLeg(
+                mode="Drive",
+                start_name=f"{destination_airport['name']} ({destination_code})",
+                end_name=destination.name,
+                hours=destination_access_hours,
+                distance_km=destination_access_km,
+                path=route_path(destination_airport["lat"], destination_airport["lon"], destination.lat, destination.lon),
+                color=[213, 94, 0, 235],
+            ),
+        ]
+        total_hours = sum(leg.hours for leg in legs)
+        total_distance_km = sum(leg.distance_km for leg in legs)
+        return RoutePlan(
+            destination=destination,
+            total_hours=total_hours,
+            total_distance_km=total_distance_km,
+            mode=estimate.mode,
+            legs=legs,
+        )
+
+    leg = RouteLeg(
+        mode=estimate.mode,
+        start_name=origin.name,
+        end_name=destination.name,
+        hours=estimate.hours,
+        distance_km=direct_distance_km,
+        path=route_path(origin.lat, origin.lon, destination.lat, destination.lon),
+        color=[0, 150, 136, 235] if estimate.mode == "Rail + road" else [213, 94, 0, 235],
+    )
+    return RoutePlan(
+        destination=destination,
+        total_hours=estimate.hours,
+        total_distance_km=direct_distance_km,
+        mode=estimate.mode,
+        legs=[leg],
+    )
 
 
 def cell_polygon(lat: float, lon: float, step: float) -> list[list[float]]:
@@ -376,7 +527,22 @@ def build_city_label_frame() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
+def make_route_frame(route_plan: RoutePlan) -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "step": index,
+            "mode": leg.mode,
+            "from": leg.start_name,
+            "to": leg.end_name,
+            "time": format_travel_time(leg.hours),
+            "hours": round(leg.hours, 2),
+            "distance_km": round(leg.distance_km, 1),
+        }
+        for index, leg in enumerate(route_plan.legs, start=1)
+    )
+
+
+def make_map(origin: Place, cells: pd.DataFrame, route_plan: RoutePlan | None = None) -> pdk.Deck:
     origin_df = pd.DataFrame(
         [
             {
@@ -387,10 +553,36 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
         ]
     )
     city_df = build_city_label_frame()
+    destination_df = pd.DataFrame()
+    route_df = pd.DataFrame()
+    if route_plan:
+        destination_df = pd.DataFrame(
+            [
+                {
+                    "name": route_plan.destination.name,
+                    "lat": route_plan.destination.lat,
+                    "lon": route_plan.destination.lon,
+                }
+            ]
+        )
+        route_df = pd.DataFrame(
+            {
+                "mode": leg.mode,
+                "from": leg.start_name,
+                "to": leg.end_name,
+                "time": format_travel_time(leg.hours),
+                "band": "",
+                "distance_km": round(leg.distance_km),
+                "path": leg.path,
+                "color": leg.color,
+            }
+            for leg in route_plan.legs
+        )
 
     layers = [
         pdk.Layer(
             "PolygonLayer",
+            id="time-cells",
             data=cells,
             get_polygon="polygon",
             get_fill_color="fill_color",
@@ -402,7 +594,18 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
             filled=True,
         ),
         pdk.Layer(
+            "PathLayer",
+            id="route-legs",
+            data=route_df,
+            get_path="path",
+            get_color="color",
+            get_width=5,
+            width_min_pixels=3,
+            pickable=False,
+        ),
+        pdk.Layer(
             "ScatterplotLayer",
+            id="city-dots",
             data=city_df,
             get_position="[lon, lat]",
             get_radius=23000,
@@ -414,6 +617,7 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
         ),
         pdk.Layer(
             "TextLayer",
+            id="city-labels",
             data=city_df,
             get_position="[lon, lat]",
             get_text="label",
@@ -426,6 +630,19 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
         ),
         pdk.Layer(
             "ScatterplotLayer",
+            id="selected-destination",
+            data=destination_df,
+            get_position="[lon, lat]",
+            get_radius=45000,
+            get_fill_color=[0, 113, 188, 245],
+            get_line_color=[255, 255, 255, 255],
+            line_width_min_pixels=2,
+            stroked=True,
+            pickable=False,
+        ),
+        pdk.Layer(
+            "ScatterplotLayer",
+            id="origin-marker",
             data=origin_df,
             get_position="[lon, lat]",
             get_radius=55000,
@@ -433,7 +650,7 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
             get_line_color=[255, 255, 255, 255],
             line_width_min_pixels=2,
             stroked=True,
-            pickable=True,
+            pickable=False,
         ),
     ]
 
@@ -442,7 +659,7 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
         initial_view_state=pdk.ViewState(latitude=58.5, longitude=-96.5, zoom=3.0, pitch=0),
         layers=layers,
         tooltip={
-            "html": "<b>{band}</b><br/>{time} from origin<br/>{mode}<br/>{distance_km} km direct",
+            "html": "<b>{band}</b><br/>{time}<br/>{mode}<br/>{from} {to}<br/>{distance_km} km",
             "style": {"backgroundColor": "#2f2b24", "color": "white"},
         },
     )
@@ -512,6 +729,52 @@ def render_time_band_legend(cells: pd.DataFrame) -> None:
     )
 
 
+def selected_destination_from_event(event: object) -> Place | None:
+    if not event:
+        return None
+
+    try:
+        selection = event.selection
+    except AttributeError:
+        selection = event.get("selection", {}) if isinstance(event, dict) else {}
+
+    try:
+        objects = selection.objects
+    except AttributeError:
+        objects = selection.get("objects", {}) if isinstance(selection, dict) else {}
+
+    selected_cells = objects.get("time-cells", []) if isinstance(objects, dict) else []
+    if not selected_cells:
+        return None
+
+    selected_cell = selected_cells[0]
+    lat = float(selected_cell["lat"])
+    lon = float(selected_cell["lon"])
+    return Place(name=nearest_known_place(lat, lon), lat=lat, lon=lon)
+
+
+def route_plan_from_selection(origin: Place) -> RoutePlan | None:
+    selected_state = st.session_state.get("passage_map")
+    destination = selected_destination_from_event(selected_state)
+    if destination:
+        return build_route_plan(origin, destination)
+    return None
+
+
+def render_route_plan(route_plan: RoutePlan | None) -> None:
+    if not route_plan:
+        st.info("Click a colored cell on the map to set a destination and show the optimal route.")
+        return
+
+    st.subheader("Selected Destination Route")
+    route_metrics = st.columns([2, 1, 1, 1])
+    route_metrics[0].metric("Destination", route_plan.destination.name)
+    route_metrics[1].metric("Total time", format_travel_time(route_plan.total_hours))
+    route_metrics[2].metric("Optimal mode", route_plan.mode)
+    route_metrics[3].metric("Route distance", f"{route_plan.total_distance_km:,.0f} km")
+    st.dataframe(make_route_frame(route_plan), hide_index=True, use_container_width=True)
+
+
 def render_context(cells: pd.DataFrame, city_estimates: pd.DataFrame) -> None:
     fastest = cells.loc[cells["hours"].idxmin()]
     slowest = cells.loc[cells["hours"].idxmax()]
@@ -562,6 +825,7 @@ def main() -> None:
 
     cells = build_passage_cells(origin.name, origin.lat, origin.lon, controls["step"], TIME_BAND_VERSION)
     city_estimates = build_city_estimates(origin)
+    route_plan = route_plan_from_selection(origin)
 
     top_row = st.columns([2, 1, 1, 1])
     top_row[0].metric("Origin", origin.name)
@@ -569,7 +833,19 @@ def main() -> None:
     top_row[2].metric("Longitude", f"{origin.lon:.4f}")
     top_row[3].metric("Cell size", f"{controls['step']:.2f} deg")
 
-    st.pydeck_chart(make_map(origin, cells), use_container_width=True)
+    chart_event = st.pydeck_chart(
+        make_map(origin, cells, route_plan),
+        use_container_width=True,
+        on_select="rerun",
+        selection_mode="single-object",
+        key="passage_map",
+    )
+    if not route_plan:
+        destination = selected_destination_from_event(chart_event)
+        if destination:
+            route_plan = build_route_plan(origin, destination)
+
+    render_route_plan(route_plan)
     render_context(cells, city_estimates)
 
 
