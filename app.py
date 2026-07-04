@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+import json
 import math
+import os
 from dataclasses import dataclass
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 import pandas as pd
 import pydeck as pdk
@@ -24,6 +28,7 @@ CANADIAN_LOCATIONS = {
     "Halifax, NS": (44.6488, -63.5752),
     "Moncton, NB": (46.0878, -64.7782),
     "St. John's, NL": (47.5615, -52.7126),
+    "Churchill, MB": (58.7684, -94.1650),
     "Yellowknife, NT": (62.4540, -114.3718),
     "Whitehorse, YT": (60.7212, -135.0568),
     "Iqaluit, NU": (63.7467, -68.5170),
@@ -78,6 +83,7 @@ AIRPORTS = {
     "YZF": {"name": "Yellowknife", "lat": 62.4628, "lon": -114.4403, "remote": True},
     "YXY": {"name": "Whitehorse", "lat": 60.7096, "lon": -135.0673, "remote": True},
     "YFB": {"name": "Iqaluit", "lat": 63.7564, "lon": -68.5558, "remote": True},
+    "YYQ": {"name": "Churchill", "lat": 58.7392, "lon": -94.0650, "remote": True},
     "YRT": {"name": "Rankin Inlet", "lat": 62.8114, "lon": -92.1158, "remote": True},
     "YCB": {"name": "Cambridge Bay", "lat": 69.1081, "lon": -105.1383, "remote": True},
     "YEV": {"name": "Inuvik", "lat": 68.3042, "lon": -133.4828, "remote": True},
@@ -131,6 +137,7 @@ DIRECT_AIRPORTS = {
     "YZF",
     "YXY",
     "YFB",
+    "YYQ",
     "YRT",
     "YCB",
     "YEV",
@@ -256,6 +263,7 @@ DIRECT_FLIGHT_PAIRS.update(
         ("YXY", "YZF"),
         ("YFB", "YOW"),
         ("YFB", "YUL"),
+        ("YYQ", "YWG"),
         ("YRT", "YWG"),
         ("YRT", "YFB"),
         ("YCB", "YZF"),
@@ -284,7 +292,18 @@ CANADA_BOUNDS = {
     "max_lon": -52.0,
 }
 CELL_STEP_DEGREES = 0.15
-CELL_DATA_VERSION = "cell-tooltip-v2"
+CELL_DATA_VERSION = "cell-landmask-v5"
+
+ALASKA_HIGHWAY_CORRIDOR = [
+    [60.7096, -135.0673],
+    [60.4883, -133.2787],
+    [60.1666, -132.7429],
+    [60.0640, -128.7089],
+    [59.7150, -127.1430],
+    [59.4210, -126.0960],
+    [58.9260, -125.7660],
+    [58.8053, -122.6972],
+]
 
 MAINLAND_POLYGON = [
     (-141.0, 69.5),
@@ -315,18 +334,23 @@ MAINLAND_POLYGON = [
 
 LAND_POLYGONS = [
     MAINLAND_POLYGON,
+    [(-141.0, 60.0), (-128.0, 60.0), (-128.0, 70.2), (-141.0, 70.2), (-141.0, 60.0)],
     [(-128.8, 50.8), (-125.2, 48.3), (-123.0, 48.3), (-124.5, 50.9), (-127.8, 51.4), (-128.8, 50.8)],
-    [(-59.8, 52.0), (-55.0, 51.7), (-52.5, 49.4), (-53.4, 47.2), (-57.3, 46.4), (-59.6, 48.6), (-59.8, 52.0)],
-    [(-64.6, 47.3), (-61.8, 47.1), (-61.9, 45.7), (-64.2, 45.8), (-64.6, 47.3)],
+    [(-59.8, 51.8), (-56.0, 52.0), (-52.2, 49.8), (-52.4, 47.0), (-55.5, 46.4), (-58.8, 47.5), (-59.8, 50.0), (-59.8, 51.8)],
+    [(-66.4, 45.4), (-65.7, 44.4), (-64.2, 43.4), (-61.0, 43.5), (-59.7, 45.1), (-60.4, 46.4), (-62.4, 46.1), (-64.8, 45.9), (-66.4, 45.4)],
+    [(-61.9, 47.1), (-60.0, 47.2), (-59.1, 46.0), (-60.2, 45.3), (-61.5, 45.6), (-61.9, 47.1)],
+    [(-67.2, 57.2), (-64.0, 58.6), (-60.0, 58.9), (-56.0, 55.2), (-56.4, 52.0), (-60.3, 52.0), (-63.8, 54.0), (-67.2, 57.2)],
     [(-91.0, 76.0), (-80.0, 72.5), (-65.0, 66.0), (-63.0, 62.0), (-72.0, 62.0), (-85.0, 66.0), (-92.0, 70.5), (-91.0, 76.0)],
+    [(-91.0, 62.0), (-63.0, 62.0), (-60.0, 74.5), (-78.0, 76.5), (-91.0, 73.0), (-91.0, 62.0)],
+    [(-101.0, 67.0), (-90.0, 67.0), (-90.0, 71.0), (-101.0, 71.0), (-101.0, 67.0)],
+    [(-126.0, 68.0), (-100.0, 68.0), (-94.0, 72.5), (-112.0, 76.5), (-126.0, 73.0), (-126.0, 68.0)],
+    [(-126.0, 73.0), (-60.0, 73.0), (-60.0, 83.8), (-95.0, 83.8), (-126.0, 78.0), (-126.0, 73.0)],
     [(-125.0, 76.0), (-112.0, 72.0), (-102.0, 72.5), (-100.0, 76.0), (-112.0, 78.0), (-125.0, 76.0)],
     [(-101.0, 80.8), (-86.0, 78.0), (-75.0, 78.8), (-68.0, 81.0), (-78.0, 83.2), (-94.0, 83.0), (-101.0, 80.8)],
     [(-122.0, 73.5), (-114.0, 70.5), (-105.0, 70.0), (-108.0, 73.2), (-116.5, 75.0), (-122.0, 73.5)],
 ]
 
-EXCLUDED_WATER_POLYGONS = [
-    [(-96.5, 51.0), (-88.5, 51.0), (-80.0, 55.0), (-78.0, 60.0), (-85.5, 64.0), (-94.0, 62.5), (-97.5, 57.0), (-96.5, 51.0)],
-]
+EXCLUDED_WATER_POLYGONS: list[list[tuple[float, float]]] = []
 
 TIME_BANDS = [
     {"label": "Under 30 min", "max_hours": 0.5, "color": [255, 247, 188, 190]},
@@ -384,6 +408,7 @@ class RouteLeg:
     distance_km: float
     path: list[list[float]]
     color: list[int]
+    route_source: str = ""
 
 
 @dataclass(frozen=True)
@@ -565,6 +590,147 @@ def destination_ground_hours(distance_km: float, lat: float) -> float:
     if lat >= 58:
         return 0.8 + distance_km / 45
     return 0.25 + distance_km / 80
+
+
+def openrouteservice_api_key() -> str:
+    try:
+        secret_key = st.secrets.get("OPENROUTESERVICE_API_KEY", "")
+    except Exception:
+        secret_key = ""
+    return str(secret_key or os.getenv("OPENROUTESERVICE_API_KEY", "")).strip()
+
+
+@st.cache_data(show_spinner=False, ttl=60 * 60 * 24)
+def fetch_openrouteservice_drive_route(
+    start_lat: float,
+    start_lon: float,
+    end_lat: float,
+    end_lon: float,
+    api_key: str,
+) -> dict[str, object] | None:
+    if not api_key:
+        return None
+
+    payload = json.dumps(
+        {
+            "coordinates": [[start_lon, start_lat], [end_lon, end_lat]],
+            "instructions": False,
+        }
+    ).encode("utf-8")
+    request = Request(
+        "https://api.openrouteservice.org/v2/directions/driving-car/geojson",
+        data=payload,
+        headers={
+            "Authorization": api_key,
+            "Content-Type": "application/json",
+            "Accept": "application/json, application/geo+json",
+        },
+        method="POST",
+    )
+
+    try:
+        with urlopen(request, timeout=12) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+        return None
+
+    features = data.get("features") or []
+    if not features:
+        return None
+
+    feature = features[0]
+    geometry = feature.get("geometry", {})
+    coordinates = geometry.get("coordinates", [])
+    summary = feature.get("properties", {}).get("summary", {})
+    if not coordinates or "duration" not in summary or "distance" not in summary:
+        return None
+
+    return {
+        "path": coordinates,
+        "hours": float(summary["duration"]) / 3600,
+        "distance_km": float(summary["distance"]) / 1000,
+    }
+
+
+def path_distance_km(path: list[list[float]]) -> float:
+    distance = 0.0
+    for start, end in zip(path, path[1:]):
+        distance += haversine_km(start[1], start[0], end[1], end[0])
+    return distance
+
+
+def alaska_highway_fallback_path(
+    start_lat: float,
+    start_lon: float,
+    end_lat: float,
+    end_lon: float,
+) -> list[list[float]] | None:
+    in_corridor = (
+        58.0 <= start_lat <= 61.2
+        and 58.0 <= end_lat <= 61.2
+        and -136.0 <= start_lon <= -122.0
+        and -136.0 <= end_lon <= -122.0
+    )
+    spans_corridor = abs(start_lon - end_lon) >= 3.0
+    if not in_corridor or not spans_corridor:
+        return None
+
+    west_to_east = start_lon < end_lon
+    low_lon = min(start_lon, end_lon)
+    high_lon = max(start_lon, end_lon)
+    waypoints = [
+        [lon, lat]
+        for lat, lon in ALASKA_HIGHWAY_CORRIDOR
+        if low_lon < lon < high_lon
+    ]
+    if not west_to_east:
+        waypoints.reverse()
+
+    if not waypoints:
+        return None
+
+    return [[start_lon, start_lat], *waypoints, [end_lon, end_lat]]
+
+
+def drive_route_details(
+    start_lat: float,
+    start_lon: float,
+    end_lat: float,
+    end_lon: float,
+    fallback_hours: float,
+    fallback_distance_km: float,
+) -> tuple[list[list[float]], float, float, str]:
+    ors_route = fetch_openrouteservice_drive_route(
+        round(start_lat, 6),
+        round(start_lon, 6),
+        round(end_lat, 6),
+        round(end_lon, 6),
+        openrouteservice_api_key(),
+    )
+    if ors_route:
+        return (
+            ors_route["path"],
+            float(ors_route["hours"]),
+            float(ors_route["distance_km"]),
+            "OpenRouteService",
+        )
+
+    fallback_path = alaska_highway_fallback_path(start_lat, start_lon, end_lat, end_lon)
+    if fallback_path:
+        fallback_path_distance = path_distance_km(fallback_path)
+        return (
+            fallback_path,
+            max(fallback_hours, fallback_path_distance / 75),
+            fallback_path_distance,
+            "Modeled Alaska Highway corridor",
+        )
+
+    return (
+        route_path(start_lat, start_lon, end_lat, end_lon),
+        fallback_hours,
+        fallback_distance_km,
+        "Modeled straight-line fallback",
+    )
 
 
 def has_direct_service(origin_code: str, destination_code: str) -> bool:
@@ -755,6 +921,22 @@ def build_route_plan(origin: Place, destination: Place) -> RoutePlan:
         hub_code = air_route.hub_code
         origin_access_hours = airport_access_hours(origin_access_km, origin.lat)
         destination_access_hours = destination_ground_hours(destination_access_km, destination.lat)
+        origin_access_path, origin_access_hours, origin_access_km, origin_access_source = drive_route_details(
+            origin.lat,
+            origin.lon,
+            origin_airport["lat"],
+            origin_airport["lon"],
+            origin_access_hours,
+            origin_access_km,
+        )
+        destination_drive_path, destination_access_hours, destination_access_km, destination_drive_source = drive_route_details(
+            destination_airport["lat"],
+            destination_airport["lon"],
+            destination.lat,
+            destination.lon,
+            destination_access_hours,
+            destination_access_km,
+        )
         legs = [
             RouteLeg(
                 mode="Ground access",
@@ -762,8 +944,9 @@ def build_route_plan(origin: Place, destination: Place) -> RoutePlan:
                 end_name=f"{origin_airport['name']} ({origin_code})",
                 hours=origin_access_hours,
                 distance_km=origin_access_km,
-                path=route_path(origin.lat, origin.lon, origin_airport["lat"], origin_airport["lon"]),
+                path=origin_access_path,
                 color=[88, 88, 88, 230],
+                route_source=origin_access_source,
             )
         ]
 
@@ -840,8 +1023,9 @@ def build_route_plan(origin: Place, destination: Place) -> RoutePlan:
                 end_name=destination.name,
                 hours=destination_access_hours,
                 distance_km=destination_access_km,
-                path=route_path(destination_airport["lat"], destination_airport["lon"], destination.lat, destination.lon),
+                path=destination_drive_path,
                 color=[213, 94, 0, 235],
+                route_source=destination_drive_source,
             )
         )
         total_hours = sum(leg.hours for leg in legs)
@@ -854,19 +1038,34 @@ def build_route_plan(origin: Place, destination: Place) -> RoutePlan:
             legs=legs,
         )
 
+    leg_path = route_path(origin.lat, origin.lon, destination.lat, destination.lon)
+    leg_hours = estimate.hours
+    leg_distance_km = direct_distance_km
+    leg_source = ""
+    if estimate.mode == "Road":
+        leg_path, leg_hours, leg_distance_km, leg_source = drive_route_details(
+            origin.lat,
+            origin.lon,
+            destination.lat,
+            destination.lon,
+            estimate.hours,
+            direct_distance_km,
+        )
+
     leg = RouteLeg(
         mode=estimate.mode,
         start_name=origin.name,
         end_name=destination.name,
-        hours=estimate.hours,
-        distance_km=direct_distance_km,
-        path=route_path(origin.lat, origin.lon, destination.lat, destination.lon),
+        hours=leg_hours,
+        distance_km=leg_distance_km,
+        path=leg_path,
         color=[0, 150, 136, 235] if estimate.mode == "Rail + road" else [213, 94, 0, 235],
+        route_source=leg_source,
     )
     return RoutePlan(
         destination=destination,
-        total_hours=estimate.hours,
-        total_distance_km=direct_distance_km,
+        total_hours=leg_hours,
+        total_distance_km=leg_distance_km,
         mode=estimate.mode,
         legs=[leg],
     )
@@ -975,6 +1174,7 @@ def make_route_frame(route_plan: RoutePlan) -> pd.DataFrame:
             "time": format_travel_time(leg.hours),
             "hours": round(leg.hours, 2),
             "distance_km": round(leg.distance_km, 1),
+            "route_source": leg.route_source,
         }
         for index, leg in enumerate(route_plan.legs, start=1)
     )
@@ -1139,8 +1339,21 @@ def render_sidebar() -> dict[str, object]:
         lat, lon = city_lat, city_lon
         origin_name = location_name
 
+    st.sidebar.header("Destination")
+    destination_name = st.sidebar.selectbox(
+        "Destination city",
+        options=[""] + list(origin_options),
+        index=0,
+        format_func=lambda option: "Select a destination..." if option == "" else option,
+    )
+    destination = None
+    if destination_name:
+        destination_lat, destination_lon = origin_options[destination_name]
+        destination = Place(name=destination_name, lat=float(destination_lat), lon=float(destination_lon))
+
     return {
         "origin": Place(name=origin_name, lat=float(lat), lon=float(lon)),
+        "destination": destination,
         "step": CELL_STEP_DEGREES,
     }
 
@@ -1238,18 +1451,6 @@ def render_route_plan(route_plan: RoutePlan | None) -> None:
 
 
 def render_context(cells: pd.DataFrame, city_estimates: pd.DataFrame) -> None:
-    fastest = cells.loc[cells["hours"].idxmin()]
-    slowest = cells.loc[cells["hours"].idxmax()]
-    dominant_mode = cells["mode"].value_counts().idxmax()
-
-    context = st.container(border=True)
-    context.subheader("Passage Chart Context")
-    metrics = context.columns(4)
-    metrics[0].metric("Nearest band", fastest["band"])
-    metrics[1].metric("Farthest band", slowest["band"])
-    metrics[2].metric("Dominant mode", dominant_mode)
-    metrics[3].metric("Mapped cells", f"{len(cells):,}")
-
     mode_frame = (
         cells.groupby("mode", as_index=False)
         .agg(cells=("mode", "size"), median_hours=("hours", "median"))
@@ -1295,7 +1496,11 @@ def main() -> None:
         CELL_DATA_VERSION,
     )
     city_estimates = build_city_estimates(origin)
-    route_plan = route_plan_from_selection(origin)
+    route_plan = (
+        build_route_plan(origin, controls["destination"])
+        if controls["destination"]
+        else route_plan_from_selection(origin)
+    )
 
     top_row = st.columns([2, 1, 1])
     top_row[0].metric("Origin", origin.name)
