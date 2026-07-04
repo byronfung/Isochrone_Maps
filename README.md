@@ -17,7 +17,13 @@ Run the North America version with:
 streamlit run northamerica.py
 ```
 
-Static cache CSVs for the North America app live in `cache/`. Rebuild them after airport or route-model edits with:
+Run the worldwide version with:
+
+```bash
+streamlit run worldwide.py
+```
+
+Static cache CSVs for the North America and worldwide apps live in `cache/`. Rebuild them after airport or route-model edits with:
 
 ```bash
 python build_cache_tables.py

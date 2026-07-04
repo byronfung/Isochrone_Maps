@@ -197,8 +197,8 @@ YTZ,Toronto Billy Bishop,YYT,St. John's,False,YUL,4.7736114918972525,2107.893217
 YTZ,Toronto Billy Bishop,YDF,Deer Lake,False,YUL,4.38260441949406,1789.5155034023626,connecting
 YTZ,Toronto Billy Bishop,YQX,Gander,False,YUL,4.6230602288188924,1986.8794609572185,connecting
 YTZ,Toronto Billy Bishop,YYR,Goose Bay,False,YUL,4.381578728740065,1756.2129889811845,connecting
-YTZ,Toronto Billy Bishop,YHM,Hamilton,False,YOW,3.3,66.73377751045841,connecting
-YTZ,Toronto Billy Bishop,YKF,Kitchener-Waterloo,False,YOW,3.3,81.34547534769894,connecting
+YTZ,Toronto Billy Bishop,YHM,Hamilton,False,DTW,3.3,66.73377751045841,connecting
+YTZ,Toronto Billy Bishop,YKF,Kitchener-Waterloo,False,DTW,3.3,81.34547534769894,connecting
 YTZ,Toronto Billy Bishop,YXU,London,True,,1.55,156.70459268135116,direct
 YTZ,Toronto Billy Bishop,YQG,Windsor,True,,1.55,326.3781863359614,direct
 YTZ,Toronto Billy Bishop,YQT,Thunder Bay,True,,2.133594562148759,929.5475409619827,direct
@@ -243,7 +243,7 @@ YTZ,Toronto Billy Bishop,CUN,Cancun,False,DTW,5.6499886479585255,2605.8305294475
 YTZ,Toronto Billy Bishop,CLE,Cleveland Hopkins,False,DTW,3.3,318.08119409166994,connecting
 YTZ,Toronto Billy Bishop,PIT,Pittsburgh,False,DTW,3.3,355.58661508179256,connecting
 YTZ,Toronto Billy Bishop,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,672.7716248582958,connecting
-YTZ,Toronto Billy Bishop,BUF,Buffalo Niagara,False,YOW,3.3,93.49473350097855,connecting
+YTZ,Toronto Billy Bishop,BUF,Buffalo Niagara,False,DTW,3.3,93.49473350097855,connecting
 YTZ,Toronto Billy Bishop,ROC,Rochester,False,YOW,3.3,150.40710752912065,connecting
 YTZ,Toronto Billy Bishop,SYR,Syracuse,False,YOW,3.3,272.05810003316435,connecting
 YTZ,Toronto Billy Bishop,PWM,Portland Maine,False,YUL,3.3507198489272447,730.8995503332758,connecting
@@ -482,7 +482,7 @@ YHU,Montreal Saint-Hubert,SYR,Syracuse,False,YOW,3.3,342.56079452207314,connecti
 YHU,Montreal Saint-Hubert,ALB,Albany,False,BOS,3.3,309.44789248669383,connecting
 YHU,Montreal Saint-Hubert,BDL,Hartford Bradley,False,BOS,3.3,402.26096686170524,connecting
 YHU,Montreal Saint-Hubert,PVD,Providence,False,BOS,3.3,451.13358791648557,connecting
-YHU,Montreal Saint-Hubert,PWM,Portland Maine,False,YUL,3.3,322.2458142426757,connecting
+YHU,Montreal Saint-Hubert,PWM,Portland Maine,False,BOS,3.3,322.2458142426757,connecting
 YVR,Vancouver,YYZ,Toronto Pearson,True,,5.08011838272515,3345.697073834623,direct
 YVR,Vancouver,YTZ,Toronto Billy Bishop,False,DTW,6.590431029374102,3364.6180424025883,connecting
 YVR,Vancouver,YUL,Montreal Trudeau,True,,5.490126139083637,3681.9034340485828,direct
@@ -3082,7 +3082,7 @@ YYR,Goose Bay,ROC,Rochester,False,YOW,4.473419534747395,1700.5078446236694,conne
 YYR,Goose Bay,SYR,Syracuse,False,YOW,4.473419534747395,1617.569382236471,connecting
 YYR,Goose Bay,PWM,Portland Maine,False,YUL,4.33085887981282,1296.4271617118657,connecting
 YHM,Hamilton,YYZ,Toronto Pearson,True,,1.55,61.396425553243624,direct
-YHM,Hamilton,YTZ,Toronto Billy Bishop,False,YOW,3.3,66.73377751045841,connecting
+YHM,Hamilton,YTZ,Toronto Billy Bishop,False,DTW,3.3,66.73377751045841,connecting
 YHM,Hamilton,YUL,Montreal Trudeau,False,YOW,3.3,554.8030794093805,connecting
 YHM,Hamilton,YHU,Montreal Saint-Hubert,False,YOW,3.3,579.9092983300214,connecting
 YHM,Hamilton,YVR,Vancouver,True,,5.0832157645180756,3348.2369269048218,direct
@@ -3114,7 +3114,7 @@ YHM,Hamilton,YDF,Deer Lake,False,YHZ,4.6298772803483,1851.9238319271387,connecti
 YHM,Hamilton,YQX,Gander,False,YHZ,4.808596109483479,2048.415316929664,connecting
 YHM,Hamilton,YYR,Goose Bay,False,YOW,4.473419534747395,1822.7378953620873,connecting
 YHM,Hamilton,YHM,Hamilton,False,,0.0,0.0,same airport
-YHM,Hamilton,YKF,Kitchener-Waterloo,False,YOW,3.3,48.039554771697226,connecting
+YHM,Hamilton,YKF,Kitchener-Waterloo,False,DTW,3.3,48.039554771697226,connecting
 YHM,Hamilton,YXU,London,False,DTW,3.3,100.13735206018414,connecting
 YHM,Hamilton,YQG,Windsor,False,DTW,3.3,266.16060882785484,connecting
 YHM,Hamilton,YQT,Thunder Bay,False,YYZ,3.861837266336214,928.5778976925906,connecting
@@ -3168,7 +3168,7 @@ YHM,Hamilton,CUN,Cancun,False,DTW,5.6499886479585255,2544.5783858165505,connecti
 YHM,Hamilton,CLE,Cleveland Hopkins,False,DTW,3.3,251.3568747084218,connecting
 YHM,Hamilton,PIT,Pittsburgh,False,DTW,3.3,299.25523455718843,connecting
 YHM,Hamilton,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,606.0706839238519,connecting
-YHM,Hamilton,BUF,Buffalo Niagara,False,YOW,3.3,101.10223690133992,connecting
+YHM,Hamilton,BUF,Buffalo Niagara,False,DTW,3.3,101.10223690133992,connecting
 YHM,Hamilton,ROC,Rochester,False,YOW,3.3,183.65783650185816,connecting
 YHM,Hamilton,SYR,Syracuse,False,YOW,3.3,310.6889378248309,connecting
 YHM,Hamilton,GSP,Greenville-Spartanburg,False,DTW,3.749947365703094,941.2546257873529,connecting
@@ -3177,7 +3177,7 @@ YHM,Hamilton,GRR,Grand Rapids,False,DTW,3.3,455.2950281493037,connecting
 YHM,Hamilton,BOI,Boise,False,YVR,7.28589049463671,2909.9926002797065,connecting
 YHM,Hamilton,GEG,Spokane,False,YYC,6.055118434791405,2947.269322520188,connecting
 YKF,Kitchener-Waterloo,YYZ,Toronto Pearson,True,,1.55,65.34379786620218,direct
-YKF,Kitchener-Waterloo,YTZ,Toronto Billy Bishop,False,YOW,3.3,81.34547534769894,connecting
+YKF,Kitchener-Waterloo,YTZ,Toronto Billy Bishop,False,DTW,3.3,81.34547534769894,connecting
 YKF,Kitchener-Waterloo,YUL,Montreal Trudeau,False,YOW,3.3,571.9694869662973,connecting
 YKF,Kitchener-Waterloo,YHU,Montreal Saint-Hubert,False,YOW,3.3,597.4551907445359,connecting
 YKF,Kitchener-Waterloo,YVR,Vancouver,True,,5.026651952390469,3301.8546009601846,direct
@@ -3208,7 +3208,7 @@ YKF,Kitchener-Waterloo,YYT,St. John's,False,YOW,4.904783018210514,2188.362713477
 YKF,Kitchener-Waterloo,YDF,Deer Lake,False,YHZ,4.66357937790584,1868.176453299902,connecting
 YKF,Kitchener-Waterloo,YQX,Gander,False,YHZ,4.842298207041019,2066.1979694152064,connecting
 YKF,Kitchener-Waterloo,YYR,Goose Bay,False,YOW,4.473419534747395,1826.0037101691798,connecting
-YKF,Kitchener-Waterloo,YHM,Hamilton,False,YOW,3.3,48.039554771697226,connecting
+YKF,Kitchener-Waterloo,YHM,Hamilton,False,DTW,3.3,48.039554771697226,connecting
 YKF,Kitchener-Waterloo,YKF,Kitchener-Waterloo,False,,0.0,0.0,same airport
 YKF,Kitchener-Waterloo,YXU,London,False,DTW,3.3,78.60313577102471,connecting
 YKF,Kitchener-Waterloo,YQG,Windsor,False,DTW,3.3,247.92488014462847,connecting
@@ -3263,7 +3263,7 @@ YKF,Kitchener-Waterloo,CUN,Cancun,False,DTW,5.6499886479585255,2565.194515370611
 YKF,Kitchener-Waterloo,CLE,Cleveland Hopkins,False,DTW,3.3,257.84974620523644,connecting
 YKF,Kitchener-Waterloo,PIT,Pittsburgh,False,DTW,3.3,330.3909914029558,connecting
 YKF,Kitchener-Waterloo,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,607.4588383920221,connecting
-YKF,Kitchener-Waterloo,BUF,Buffalo Niagara,False,YOW,3.3,145.44964153975272,connecting
+YKF,Kitchener-Waterloo,BUF,Buffalo Niagara,False,DTW,3.3,145.44964153975272,connecting
 YKF,Kitchener-Waterloo,ROC,Rochester,False,YOW,3.3,222.2993568882174,connecting
 YKF,Kitchener-Waterloo,SYR,Syracuse,False,YOW,3.3,347.9531084736318,connecting
 YKF,Kitchener-Waterloo,GSP,Greenville-Spartanburg,False,DTW,3.749947365703094,965.4436799666818,connecting
@@ -3387,7 +3387,7 @@ YQG,Windsor,YVO,Val-d'Or,False,YYZ,3.368265240526674,759.340252869476,connecting
 YQG,Windsor,ATL,Atlanta Hartsfield-Jackson,False,DTW,3.918482779868076,968.7476049256641,connecting
 YQG,Windsor,LAX,Los Angeles,False,ORD,6.166988588301635,3211.3648902305004,connecting
 YQG,Windsor,ORD,Chicago O'Hare,True,,1.55,409.68917983785724,direct
-YQG,Windsor,MDW,Chicago Midway,False,ORD,3.3,399.82362159834446,connecting
+YQG,Windsor,MDW,Chicago Midway,False,DTW,3.3,399.82362159834446,connecting
 YQG,Windsor,DFW,Dallas-Fort Worth,False,ORD,4.3231701272856595,1616.9844051799835,connecting
 YQG,Windsor,DEN,Denver,False,ORD,4.48902795378698,1835.4020603250233,connecting
 YQG,Windsor,JFK,New York JFK,False,YYZ,3.4673047303995754,785.6546007571849,connecting
@@ -3399,12 +3399,12 @@ YQG,Windsor,CLT,Charlotte Douglas,False,DTW,3.73294099077175,804.1856387042802,c
 YQG,Windsor,BNA,Nashville,False,ORD,3.5534776240214097,755.0391827901024,connecting
 YQG,Windsor,DTW,Detroit Metro,True,,1.55,33.56536757221445,direct
 YQG,Windsor,MSP,Minneapolis-Saint Paul,False,ORD,3.405308153773943,875.6599014980804,connecting
-YQG,Windsor,MKE,Milwaukee,False,ORD,3.3,411.1224706908823,connecting
+YQG,Windsor,MKE,Milwaukee,False,DTW,3.3,411.1224706908823,connecting
 YQG,Windsor,STL,St. Louis,False,ORD,3.3,739.2202254557031,connecting
 YQG,Windsor,MCI,Kansas City,False,ORD,3.5385496595146506,1042.8130941917445,connecting
 YQG,Windsor,SDF,Louisville,False,ORD,3.3123186697713582,513.4277471993213,connecting
 YQG,Windsor,CMH,Columbus,False,DTW,3.3,253.1114402556247,connecting
-YQG,Windsor,IND,Indianapolis,False,ORD,3.3,399.23335127933916,connecting
+YQG,Windsor,IND,Indianapolis,False,DTW,3.3,399.23335127933916,connecting
 YQG,Windsor,IAH,Houston Intercontinental,False,ORD,4.566286703156739,1757.4118028159578,connecting
 YQG,Windsor,PHX,Phoenix Sky Harbor,False,ORD,5.570813558343968,2717.4468685176994,connecting
 YQG,Windsor,LAS,Las Vegas,False,ORD,5.715119850167191,2841.084702041596,connecting
@@ -3417,14 +3417,14 @@ YQG,Windsor,MTY,Monterrey,False,ORD,5.334147548348465,2411.700465162636,connecti
 YQG,Windsor,CUN,Cancun,False,ORD,5.591668414647602,2389.958537073928,connecting
 YQG,Windsor,CLE,Cleveland Hopkins,False,DTW,3.3,132.73231386700343,connecting
 YQG,Windsor,PIT,Pittsburgh,False,DTW,3.3,301.5572789488803,connecting
-YQG,Windsor,CVG,Cincinnati-Northern Kentucky,False,ORD,3.3,386.75543846141386,connecting
+YQG,Windsor,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,386.75543846141386,connecting
 YQG,Windsor,BUF,Buffalo Niagara,False,DTW,3.3,353.4192608952132,connecting
 YQG,Windsor,ROC,Rochester,False,YYZ,3.3,441.73950431314285,connecting
 YQG,Windsor,SYR,Syracuse,False,YYZ,3.3,567.2668143754775,connecting
 YQG,Windsor,GSP,Greenville-Spartanburg,False,DTW,3.749947365703094,823.0930158852827,connecting
 YQG,Windsor,OMA,Omaha,False,ORD,3.564204451157109,1077.074431229361,connecting
 YQG,Windsor,DSM,Des Moines,False,ORD,3.3352055280008024,889.3604580992842,connecting
-YQG,Windsor,GRR,Grand Rapids,False,ORD,3.3,220.69835969117742,connecting
+YQG,Windsor,GRR,Grand Rapids,False,DTW,3.3,220.69835969117742,connecting
 YQG,Windsor,FAR,Fargo,False,ORD,3.8413886533788295,1210.613894268634,connecting
 YQG,Windsor,FSD,Sioux Falls,False,ORD,3.6554584852919088,1130.4658006074922,connecting
 YQG,Windsor,XNA,Northwest Arkansas,False,ORD,3.7735713773949353,1181.0620882340324,connecting
@@ -5001,7 +5001,7 @@ MDW,Chicago Midway,YHZ,Halifax,False,DTW,4.728595583634927,1983.0634256749183,co
 MDW,Chicago Midway,YHM,Hamilton,False,DTW,3.3,659.0811561582727,connecting
 MDW,Chicago Midway,YKF,Kitchener-Waterloo,False,DTW,3.3,631.1090449380248,connecting
 MDW,Chicago Midway,YXU,London,False,DTW,3.3,559.0529789759961,connecting
-MDW,Chicago Midway,YQG,Windsor,False,ORD,3.3,399.82362159834446,connecting
+MDW,Chicago Midway,YQG,Windsor,False,DTW,3.3,399.82362159834446,connecting
 MDW,Chicago Midway,YQT,Thunder Bay,False,MSP,3.4794964606026957,742.511357363236,connecting
 MDW,Chicago Midway,YSB,Sudbury,False,DTW,3.3969989458735004,771.8321323961607,connecting
 MDW,Chicago Midway,YAM,Sault Ste. Marie,False,DTW,3.3395625642530042,582.8702970760127,connecting
@@ -5019,12 +5019,12 @@ MDW,Chicago Midway,CLT,Charlotte Douglas,False,DTW,3.73294099077175,939.94069848
 MDW,Chicago Midway,BNA,Nashville,False,ORD,3.5534776240214097,636.2274303667488,connecting
 MDW,Chicago Midway,DTW,Detroit Metro,True,,1.55,366.39837820181083,direct
 MDW,Chicago Midway,MSP,Minneapolis-Saint Paul,True,,1.6835209015111383,560.4871392391334,direct
-MDW,Chicago Midway,MKE,Milwaukee,False,ORD,3.3,129.57492339796855,connecting
+MDW,Chicago Midway,MKE,Milwaukee,False,DTW,3.3,129.57492339796855,connecting
 MDW,Chicago Midway,STL,St. Louis,False,ORD,3.3,404.3582311786695,connecting
 MDW,Chicago Midway,MCI,Kansas City,False,ORD,3.5385496595146506,649.8559022998905,connecting
 MDW,Chicago Midway,SDF,Louisville,False,ORD,3.3123186697713582,436.83826149288205,connecting
 MDW,Chicago Midway,CMH,Columbus,False,DTW,3.3,454.55106250335933,connecting
-MDW,Chicago Midway,IND,Indianapolis,False,ORD,3.3,260.82180978561007,connecting
+MDW,Chicago Midway,IND,Indianapolis,False,DTW,3.3,260.82180978561007,connecting
 MDW,Chicago Midway,IAH,Houston Intercontinental,False,ORD,4.566286703156739,1477.4926648640303,connecting
 MDW,Chicago Midway,PHX,Phoenix Sky Harbor,False,MSP,5.3857435433246446,2319.668184169195,connecting
 MDW,Chicago Midway,LAS,Las Vegas,False,MSP,5.4295193787477825,2441.8836209667907,connecting
@@ -5037,12 +5037,12 @@ MDW,Chicago Midway,MTY,Monterrey,False,ORD,5.334147548348465,2109.6882987953977,
 MDW,Chicago Midway,CUN,Cancun,False,ORD,5.591668414647602,2308.7904605106496,connecting
 MDW,Chicago Midway,CLE,Cleveland Hopkins,False,DTW,3.3,492.4697149129455,connecting
 MDW,Chicago Midway,PIT,Pittsburgh,False,DTW,3.3,645.7141591560219,connecting
-MDW,Chicago Midway,CVG,Cincinnati-Northern Kentucky,False,ORD,3.3,401.0292126238057,connecting
+MDW,Chicago Midway,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,401.0292126238057,connecting
 MDW,Chicago Midway,BUF,Buffalo Niagara,False,DTW,3.3,751.7201693287403,connecting
 MDW,Chicago Midway,GSP,Greenville-Spartanburg,False,DTW,3.749947365703094,905.0710376701842,connecting
 MDW,Chicago Midway,OMA,Omaha,False,MSP,3.4365048579523734,679.4610882228392,connecting
 MDW,Chicago Midway,DSM,Des Moines,False,ORD,3.3352055280008024,491.74621595204263,connecting
-MDW,Chicago Midway,GRR,Grand Rapids,False,ORD,3.3,219.943062039601,connecting
+MDW,Chicago Midway,GRR,Grand Rapids,False,DTW,3.3,219.943062039601,connecting
 MDW,Chicago Midway,FAR,Fargo,False,MSP,3.4335209015111383,918.327838461804,connecting
 MDW,Chicago Midway,BIS,Bismarck,False,MSP,3.6387476254588247,1171.5617382716398,connecting
 MDW,Chicago Midway,RAP,Rapid City,False,MSP,3.8415168915497255,1269.43763045309,connecting
@@ -5654,7 +5654,7 @@ LGA,New York LaGuardia,JFK,New York JFK,True,,1.55,17.108126953835857,direct
 LGA,New York LaGuardia,LGA,New York LaGuardia,False,,0.0,0.0,same airport
 LGA,New York LaGuardia,EWR,Newark Liberty,True,,1.55,27.12079710171424,direct
 LGA,New York LaGuardia,BOS,Boston Logan,True,,1.55,296.59667734645535,direct
-LGA,New York LaGuardia,PHL,Philadelphia,False,EWR,3.3,153.3831675721222,connecting
+LGA,New York LaGuardia,PHL,Philadelphia,False,BOS,3.3,153.3831675721222,connecting
 LGA,New York LaGuardia,DCA,Washington National,False,EWR,3.3,344.8986598205697,connecting
 LGA,New York LaGuardia,IAD,Washington Dulles,False,EWR,3.3,366.85122785389024,connecting
 LGA,New York LaGuardia,BWI,Baltimore-Washington,False,EWR,3.3,297.1735537382476,connecting
@@ -5676,9 +5676,9 @@ LGA,New York LaGuardia,CUN,Cancun,False,EWR,5.7899898507904375,2514.685135921578
 LGA,New York LaGuardia,PIT,Pittsburgh,False,EWR,3.3743152659702838,537.4087586036813,connecting
 LGA,New York LaGuardia,ROC,Rochester,False,EWR,3.3,407.9644439772047,connecting
 LGA,New York LaGuardia,SYR,Syracuse,False,EWR,3.3,318.49883816712025,connecting
-LGA,New York LaGuardia,ALB,Albany,False,EWR,3.3,219.2919605769181,connecting
-LGA,New York LaGuardia,BDL,Hartford Bradley,False,EWR,3.3,163.0075081328015,connecting
-LGA,New York LaGuardia,PVD,Providence,False,EWR,3.3,229.98418355685988,connecting
+LGA,New York LaGuardia,ALB,Albany,False,BOS,3.3,219.2919605769181,connecting
+LGA,New York LaGuardia,BDL,Hartford Bradley,False,BOS,3.3,163.0075081328015,connecting
+LGA,New York LaGuardia,PVD,Providence,False,BOS,3.3,229.98418355685988,connecting
 LGA,New York LaGuardia,PWM,Portland Maine,False,BOS,3.3,433.48691612606024,connecting
 LGA,New York LaGuardia,RIC,Richmond,False,EWR,3.3,469.65196008481837,connecting
 LGA,New York LaGuardia,ORF,Norfolk,False,EWR,3.307359646629355,476.3835244219537,connecting
@@ -6050,7 +6050,7 @@ PHL,Philadelphia,ORD,Chicago O'Hare,False,EWR,4.157595691322931,1088.27436519303
 PHL,Philadelphia,DFW,Dallas-Fort Worth,False,EWR,5.438113429443302,2092.8767510272396,connecting
 PHL,Philadelphia,DEN,Denver,False,EWR,5.8916589903045775,2500.4012677571654,connecting
 PHL,Philadelphia,JFK,New York JFK,True,,1.55,150.70077713051919,direct
-PHL,Philadelphia,LGA,New York LaGuardia,False,EWR,3.3,153.3831675721222,connecting
+PHL,Philadelphia,LGA,New York LaGuardia,False,BOS,3.3,153.3831675721222,connecting
 PHL,Philadelphia,EWR,Newark Liberty,True,,1.55,128.14158899293292,direct
 PHL,Philadelphia,BOS,Boston Logan,True,,1.55,449.84827260179026,direct
 PHL,Philadelphia,PHL,Philadelphia,False,,0.0,0.0,same airport
@@ -6075,9 +6075,9 @@ PHL,Philadelphia,CUN,Cancun,False,EWR,5.7899898507904375,2367.981718011395,conne
 PHL,Philadelphia,PIT,Pittsburgh,False,EWR,3.3743152659702838,429.40728871623116,connecting
 PHL,Philadelphia,ROC,Rochester,False,EWR,3.3,413.61287870335985,connecting
 PHL,Philadelphia,SYR,Syracuse,False,EWR,3.3,367.03186109017065,connecting
-PHL,Philadelphia,ALB,Albany,False,EWR,3.3,341.4526507099952,connecting
-PHL,Philadelphia,BDL,Hartford Bradley,False,EWR,3.3,314.53964108645454,connecting
-PHL,Philadelphia,PVD,Providence,False,EWR,3.3,381.2263235084304,connecting
+PHL,Philadelphia,ALB,Albany,False,BOS,3.3,341.4526507099952,connecting
+PHL,Philadelphia,BDL,Hartford Bradley,False,BOS,3.3,314.53964108645454,connecting
+PHL,Philadelphia,PVD,Providence,False,BOS,3.3,381.2263235084304,connecting
 PHL,Philadelphia,PWM,Portland Maine,False,BOS,3.3,585.7246873312516,connecting
 PHL,Philadelphia,RIC,Richmond,False,EWR,3.3,319.2073797756978,connecting
 PHL,Philadelphia,ORF,Norfolk,False,EWR,3.307359646629355,341.708975206976,connecting
@@ -7301,14 +7301,14 @@ MKE,Milwaukee,YHZ,Halifax,False,DTW,4.728595583634927,1957.8858299209537,connect
 MKE,Milwaukee,YHM,Hamilton,False,DTW,3.3,647.06939059031,connecting
 MKE,Milwaukee,YKF,Kitchener-Waterloo,False,DTW,3.3,611.8108450109513,connecting
 MKE,Milwaukee,YXU,London,False,DTW,3.3,548.3535581738281,connecting
-MKE,Milwaukee,YQG,Windsor,False,ORD,3.3,411.1224706908823,connecting
+MKE,Milwaukee,YQG,Windsor,False,DTW,3.3,411.1224706908823,connecting
 MKE,Milwaukee,YQT,Thunder Bay,False,MSP,3.378628686757949,613.2830287993213,connecting
 MKE,Milwaukee,YSB,Sudbury,False,DTW,3.3969989458735004,693.0975049260333,connecting
 MKE,Milwaukee,YAM,Sault Ste. Marie,False,DTW,3.3395625642530042,475.6933815277411,connecting
 MKE,Milwaukee,ATL,Atlanta Hartsfield-Jackson,False,DTW,3.918482779868076,1077.9354150925656,connecting
 MKE,Milwaukee,LAX,Los Angeles,False,MSP,5.791761498540749,2820.6838413112864,connecting
 MKE,Milwaukee,ORD,Chicago O'Hare,True,,1.55,108.19637326242736,direct
-MKE,Milwaukee,MDW,Chicago Midway,False,ORD,3.3,129.57492339796855,connecting
+MKE,Milwaukee,MDW,Chicago Midway,False,DTW,3.3,129.57492339796855,connecting
 MKE,Milwaukee,DFW,Dallas-Fort Worth,False,ORD,4.3231701272856595,1373.4133704624637,connecting
 MKE,Milwaukee,DEN,Denver,False,MSP,4.1154104173556,1438.232498460939,connecting
 MKE,Milwaukee,JFK,New York JFK,False,DTW,3.7463102047047783,1196.6383837736735,connecting
@@ -7324,7 +7324,7 @@ MKE,Milwaukee,STL,St. Louis,False,ORD,3.3,511.0882752424754,connecting
 MKE,Milwaukee,MCI,Kansas City,False,ORD,3.5385496595146506,700.1787055536721,connecting
 MKE,Milwaukee,SDF,Louisville,False,ORD,3.3123186697713582,561.1644141109996,connecting
 MKE,Milwaukee,CMH,Columbus,False,DTW,3.3,530.4820294899343,connecting
-MKE,Milwaukee,IND,Indianapolis,False,ORD,3.3,383.2335056948654,connecting
+MKE,Milwaukee,IND,Indianapolis,False,DTW,3.3,383.2335056948654,connecting
 MKE,Milwaukee,IAH,Houston Intercontinental,False,ORD,4.566286703156739,1585.3070991579234,connecting
 MKE,Milwaukee,PHX,Phoenix Sky Harbor,False,MSP,5.284875769479898,2346.503232447452,connecting
 MKE,Milwaukee,LAS,Las Vegas,False,MSP,5.328651604903035,2446.895761056775,connecting
@@ -7337,12 +7337,12 @@ MKE,Milwaukee,MTY,Monterrey,False,ORD,5.334147548348465,2208.274767569525,connec
 MKE,Milwaukee,CUN,Cancun,False,ORD,5.591668414647602,2438.2078630898363,connecting
 MKE,Milwaukee,CLE,Cleveland Hopkins,False,DTW,3.3,526.5546606324966,connecting
 MKE,Milwaukee,PIT,Pittsburgh,False,DTW,3.3,691.8585356155271,connecting
-MKE,Milwaukee,CVG,Cincinnati-Northern Kentucky,False,ORD,3.3,511.1073785333249,connecting
+MKE,Milwaukee,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,511.1073785333249,connecting
 MKE,Milwaukee,BUF,Buffalo Niagara,False,DTW,3.3,745.5874583451592,connecting
 MKE,Milwaukee,GSP,Greenville-Spartanburg,False,DTW,3.749947365703094,1020.5613153916169,connecting
 MKE,Milwaukee,OMA,Omaha,False,MSP,3.335637084107627,684.120659076653,connecting
 MKE,Milwaukee,DSM,Des Moines,False,MSP,3.3326531276663918,499.91084029182696,connecting
-MKE,Milwaukee,GRR,Grand Rapids,False,ORD,3.3,193.44886616342947,connecting
+MKE,Milwaukee,GRR,Grand Rapids,False,DTW,3.3,193.44886616342947,connecting
 MKE,Milwaukee,FAR,Fargo,False,MSP,3.3326531276663918,828.776975230457,connecting
 MKE,Milwaukee,BIS,Bismarck,False,MSP,3.537879851614078,1096.8137480315966,connecting
 MKE,Milwaukee,RAP,Rapid City,False,MSP,3.740649117704979,1227.2409545677995,connecting
@@ -7630,14 +7630,14 @@ IND,Indianapolis,YHZ,Halifax,False,DTW,4.728595583634927,1952.4821443040578,conn
 IND,Indianapolis,YHM,Hamilton,False,DTW,3.3,654.4119406845078,connecting
 IND,Indianapolis,YKF,Kitchener-Waterloo,False,DTW,3.3,644.1599127403963,connecting
 IND,Indianapolis,YXU,London,False,DTW,3.3,565.5885427846036,connecting
-IND,Indianapolis,YQG,Windsor,False,ORD,3.3,399.23335127933916,connecting
+IND,Indianapolis,YQG,Windsor,False,DTW,3.3,399.23335127933916,connecting
 IND,Indianapolis,YQT,Thunder Bay,False,ORD,3.6280138551631187,992.1264959378401,connecting
 IND,Indianapolis,YSB,Sudbury,False,DTW,3.3969989458735004,887.4959247542157,connecting
 IND,Indianapolis,YAM,Sault Ste. Marie,False,DTW,3.3395625642530042,766.3040192848898,connecting
 IND,Indianapolis,ATL,Atlanta Hartsfield-Jackson,False,CLT,3.5887490642077964,695.8418495523383,connecting
 IND,Indianapolis,LAX,Los Angeles,False,ORD,6.166988588301635,2912.9628741713227,connecting
 IND,Indianapolis,ORD,Chicago O'Hare,True,,1.55,285.26713659704245,direct
-IND,Indianapolis,MDW,Chicago Midway,False,ORD,3.3,260.82180978561007,connecting
+IND,Indianapolis,MDW,Chicago Midway,False,DTW,3.3,260.82180978561007,connecting
 IND,Indianapolis,DFW,Dallas-Fort Worth,False,ORD,4.3231701272856595,1223.9319177779294,connecting
 IND,Indianapolis,DEN,Denver,False,ORD,4.48902795378698,1567.737343679471,connecting
 IND,Indianapolis,JFK,New York JFK,False,DTW,3.7463102047047783,1067.376331044487,connecting
@@ -7653,7 +7653,7 @@ IND,Indianapolis,RDU,Raleigh-Durham,False,CLT,3.5887490642077964,785.07895561511
 IND,Indianapolis,BNA,Nashville,False,ORD,3.5534776240214097,400.7110139108378,connecting
 IND,Indianapolis,DTW,Detroit Metro,True,,1.55,371.57102765098347,direct
 IND,Indianapolis,MSP,Minneapolis-Saint Paul,False,ORD,3.405308153773943,808.6103335052765,connecting
-IND,Indianapolis,MKE,Milwaukee,False,ORD,3.3,383.2335056948654,connecting
+IND,Indianapolis,MKE,Milwaukee,False,DTW,3.3,383.2335056948654,connecting
 IND,Indianapolis,STL,St. Louis,False,ORD,3.3,367.4937316793172,connecting
 IND,Indianapolis,MCI,Kansas City,False,ORD,3.5385496595146506,723.5612251648542,connecting
 IND,Indianapolis,SDF,Louisville,False,ORD,3.3123186697713582,178.2285475891537,connecting
@@ -7671,7 +7671,7 @@ IND,Indianapolis,MTY,Monterrey,False,ORD,5.334147548348465,2012.4720205667738,co
 IND,Indianapolis,CUN,Cancun,False,CLT,5.086752389078821,2077.9514389624046,connecting
 IND,Indianapolis,CLE,Cleveland Hopkins,False,DTW,3.3,419.99254087395985,connecting
 IND,Indianapolis,PIT,Pittsburgh,False,DTW,3.3,522.5583186479184,connecting
-IND,Indianapolis,CVG,Cincinnati-Northern Kentucky,False,ORD,3.3,158.3283697362887,connecting
+IND,Indianapolis,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,158.3283697362887,connecting
 IND,Indianapolis,BUF,Buffalo Niagara,False,DTW,3.3,725.6523405420364,connecting
 IND,Indianapolis,RIC,Richmond,False,CLT,3.5887490642077964,817.2340476309394,connecting
 IND,Indianapolis,ORF,Norfolk,False,CLT,3.606670586173899,934.2981218658722,connecting
@@ -7682,7 +7682,7 @@ IND,Indianapolis,BHM,Birmingham,False,CLT,3.725861454612606,685.5607037272779,co
 IND,Indianapolis,GSP,Greenville-Spartanburg,False,CLT,3.5887490642077964,645.8665975700202,connecting
 IND,Indianapolis,OMA,Omaha,False,ORD,3.564204451157109,830.0284052114829,connecting
 IND,Indianapolis,DSM,Des Moines,False,ORD,3.3352055280008024,653.6146761447187,connecting
-IND,Indianapolis,GRR,Grand Rapids,False,ORD,3.3,357.6176286745798,connecting
+IND,Indianapolis,GRR,Grand Rapids,False,DTW,3.3,357.6176286745798,connecting
 IND,Indianapolis,FAR,Fargo,False,ORD,3.8413886533788295,1166.8806644589315,connecting
 IND,Indianapolis,FSD,Sioux Falls,False,ORD,3.6554584852919088,967.6296538884282,connecting
 IND,Indianapolis,XNA,Northwest Arkansas,False,ORD,3.7735713773949353,798.816743294746,connecting
@@ -9264,23 +9264,23 @@ SAN,San Diego,OAK,Oakland,False,LAX,3.4109753035825463,717.3471495005217,connect
 SAN,San Diego,SJC,San Jose,False,LAX,3.354735445680687,671.2792534806541,connecting
 SAN,San Diego,SMF,Sacramento,False,LAX,3.4822945123009266,772.4460253877205,connecting
 SAN,San Diego,SAN,San Diego,False,,0.0,0.0,same airport
-SAN,San Diego,FAT,Fresno,False,LAX,3.3,505.16614281552046,connecting
+SAN,San Diego,FAT,Fresno,False,LAS,3.3,505.16614281552046,connecting
 SAN,San Diego,ANC,Anchorage,False,LAS,7.2659181245333695,3941.700717726587,connecting
 SAN,San Diego,MEX,Mexico City,False,PHX,5.2556037177607156,2330.4356501819893,connecting
 SAN,San Diego,GDL,Guadalajara,False,PHX,4.836527753549093,1932.224341745868,connecting
 SAN,San Diego,MTY,Monterrey,False,PHX,4.539896798186856,1825.9903012203563,connecting
 SAN,San Diego,CUN,Cancun,False,PHX,6.24796251502616,3260.630684517533,connecting
-SAN,San Diego,TIJ,Tijuana,False,LAX,3.3,29.92558719172499,connecting
+SAN,San Diego,TIJ,Tijuana,False,LAS,3.3,29.92558719172499,connecting
 SAN,San Diego,SJD,Los Cabos,False,PHX,4.2170521567514365,1292.8727702848394,connecting
 SAN,San Diego,HMO,Hermosillo,False,PHX,3.3950716796726645,712.0427080878411,connecting
 SAN,San Diego,CJS,Ciudad Juarez,False,PHX,3.4793979905607157,1019.9082558320534,connecting
 SAN,San Diego,BOI,Boise,False,LAS,3.770436013615037,1207.2704440870093,connecting
 SAN,San Diego,RNO,Reno-Tahoe,False,LAS,3.4272887098365468,786.9145400345349,connecting
-SAN,San Diego,BUR,Burbank,False,LAX,3.3,195.6779585597931,connecting
-SAN,San Diego,LGB,Long Beach,False,LAX,3.3,149.87327720157722,connecting
-SAN,San Diego,ONT,Ontario California,False,LAX,3.3,151.82010223010874,connecting
-SAN,San Diego,SNA,Orange County,False,LAX,3.3,122.11457613562266,connecting
-SAN,San Diego,PSP,Palm Springs,False,LAX,3.3,137.5601256377039,connecting
+SAN,San Diego,BUR,Burbank,False,LAS,3.3,195.6779585597931,connecting
+SAN,San Diego,LGB,Long Beach,False,LAS,3.3,149.87327720157722,connecting
+SAN,San Diego,ONT,Ontario California,False,LAS,3.3,151.82010223010874,connecting
+SAN,San Diego,SNA,Orange County,False,LAS,3.3,122.11457613562266,connecting
+SAN,San Diego,PSP,Palm Springs,False,LAS,3.3,137.5601256377039,connecting
 SAN,San Diego,COS,Colorado Springs,False,PHX,3.878113277443081,1312.0238935774019,connecting
 SAN,San Diego,CUU,Chihuahua,False,PHX,3.7471968526710873,1162.373922275106,connecting
 SAN,San Diego,LAP,La Paz,False,PHX,4.080721813341095,1171.3969596285071,connecting
@@ -9316,22 +9316,22 @@ FAT,Fresno,SFO,San Francisco,True,,1.55,253.71121639729722,direct
 FAT,Fresno,OAK,Oakland,False,SFO,3.3,244.68357320112082,connecting
 FAT,Fresno,SJC,San Jose,False,SFO,3.3,206.74083494381185,connecting
 FAT,Fresno,SMF,Sacramento,False,SFO,3.3,269.543571084556,connecting
-FAT,Fresno,SAN,San Diego,False,LAX,3.3,505.16614281552046,connecting
+FAT,Fresno,SAN,San Diego,False,LAS,3.3,505.16614281552046,connecting
 FAT,Fresno,FAT,Fresno,False,,0.0,0.0,same airport
 FAT,Fresno,ANC,Anchorage,False,SFO,6.705539930193317,3436.5431600076718,connecting
 FAT,Fresno,MEX,Mexico City,False,LAS,5.7108770622509955,2783.8892231121345,connecting
 FAT,Fresno,GDL,Guadalajara,False,LAS,5.28530828862298,2406.900532337676,connecting
 FAT,Fresno,MTY,Monterrey,False,LAS,4.984798536077562,2221.9859835505476,connecting
 FAT,Fresno,CUN,Cancun,False,LAS,6.665130957619188,3618.215674883266,connecting
-FAT,Fresno,TIJ,Tijuana,False,LAX,3.3,533.7252502823395,connecting
+FAT,Fresno,TIJ,Tijuana,False,LAS,3.3,533.7252502823395,connecting
 FAT,Fresno,HMO,Hermosillo,False,LAS,3.807065523112287,1175.3495290016083,connecting
 FAT,Fresno,BOI,Boise,False,LAS,3.770436013615037,810.9320351128654,connecting
 FAT,Fresno,RNO,Reno-Tahoe,False,SFO,3.3,302.80464405239036,connecting
-FAT,Fresno,BUR,Burbank,False,LAX,3.3,311.69978545986766,connecting
-FAT,Fresno,LGB,Long Beach,False,LAX,3.3,358.3590233060967,connecting
-FAT,Fresno,ONT,Ontario California,False,LAX,3.3,358.14966870948024,connecting
-FAT,Fresno,SNA,Orange County,False,LAX,3.3,383.50580818150036,connecting
-FAT,Fresno,PSP,Palm Springs,False,LAX,3.3,438.42907155918164,connecting
+FAT,Fresno,BUR,Burbank,False,LAS,3.3,311.69978545986766,connecting
+FAT,Fresno,LGB,Long Beach,False,LAS,3.3,358.3590233060967,connecting
+FAT,Fresno,ONT,Ontario California,False,LAS,3.3,358.14966870948024,connecting
+FAT,Fresno,SNA,Orange County,False,LAS,3.3,383.50580818150036,connecting
+FAT,Fresno,PSP,Palm Springs,False,LAS,3.3,438.42907155918164,connecting
 ANC,Anchorage,YYZ,Toronto Pearson,True,,6.934889350685447,4866.609267562067,direct
 ANC,Anchorage,YTZ,Toronto Billy Bishop,False,DTW,8.593494822165958,4882.8048891129265,connecting
 ANC,Anchorage,YUL,Montreal Trudeau,True,,7.1264799967701045,5023.713597351486,direct
@@ -10392,8 +10392,8 @@ TIJ,Tijuana,SFO,San Francisco,False,LAX,3.413004012584126,748.9240554279523,conn
 TIJ,Tijuana,OAK,Oakland,False,LAX,3.4109753035825463,747.1022185052535,connecting
 TIJ,Tijuana,SJC,San Jose,False,LAX,3.354735445680687,701.0616019985375,connecting
 TIJ,Tijuana,SMF,Sacramento,False,LAX,3.4822945123009266,801.4307718107264,connecting
-TIJ,Tijuana,SAN,San Diego,False,LAX,3.3,29.92558719172499,connecting
-TIJ,Tijuana,FAT,Fresno,False,LAX,3.3,533.7252502823395,connecting
+TIJ,Tijuana,SAN,San Diego,False,LAS,3.3,29.92558719172499,connecting
+TIJ,Tijuana,FAT,Fresno,False,LAS,3.3,533.7252502823395,connecting
 TIJ,Tijuana,ANC,Anchorage,False,LAS,7.2659181245333695,3970.2398323040516,connecting
 TIJ,Tijuana,MEX,Mexico City,False,PHX,5.23611978404935,2301.041984241476,connecting
 TIJ,Tijuana,GDL,Guadalajara,False,PHX,4.8170438198377274,1902.3908512509151,connecting
@@ -10405,11 +10405,11 @@ TIJ,Tijuana,HMO,Hermosillo,False,PHX,3.3755877459612993,682.8774374122613,connec
 TIJ,Tijuana,CJS,Ciudad Juarez,False,PHX,3.4599140568493505,997.7578265590835,connecting
 TIJ,Tijuana,BOI,Boise,False,LAS,3.770436013615037,1227.4671533967792,connecting
 TIJ,Tijuana,RNO,Reno-Tahoe,False,LAS,3.4272887098365468,813.4599448940073,connecting
-TIJ,Tijuana,BUR,Burbank,False,LAX,3.3,225.11576385302604,connecting
-TIJ,Tijuana,LGB,Long Beach,False,LAX,3.3,179.5482895214769,connecting
-TIJ,Tijuana,ONT,Ontario California,False,LAX,3.3,178.36460801737272,connecting
-TIJ,Tijuana,SNA,Orange County,False,LAX,3.3,151.36733171371606,connecting
-TIJ,Tijuana,PSP,Palm Springs,False,LAX,3.3,149.63674680033841,connecting
+TIJ,Tijuana,BUR,Burbank,False,LAS,3.3,225.11576385302604,connecting
+TIJ,Tijuana,LGB,Long Beach,False,LAS,3.3,179.5482895214769,connecting
+TIJ,Tijuana,ONT,Ontario California,False,LAS,3.3,178.36460801737272,connecting
+TIJ,Tijuana,SNA,Orange County,False,LAS,3.3,151.36733171371606,connecting
+TIJ,Tijuana,PSP,Palm Springs,False,LAS,3.3,149.63674680033841,connecting
 TIJ,Tijuana,COS,Colorado Springs,False,PHX,3.8586293437317156,1307.2292592198141,connecting
 TIJ,Tijuana,CUU,Chihuahua,False,PHX,3.727712918959722,1135.5398502422229,connecting
 TIJ,Tijuana,LAP,La Paz,False,PHX,4.06123787962973,1141.762329836592,connecting
@@ -10635,7 +10635,7 @@ QRO,Queretaro,PVR,Puerto Vallarta,False,GDL,3.3,527.4119711146191,connecting
 QRO,Queretaro,SJD,Los Cabos,False,GDL,3.631983608143914,1023.1725771378533,connecting
 QRO,Queretaro,MID,Merida,False,MEX,3.965141385653821,1094.9113019381005,connecting
 QRO,Queretaro,QRO,Queretaro,False,,0.0,0.0,same airport
-QRO,Queretaro,BJX,Bajio,False,MEX,3.3,140.9672510544511,connecting
+QRO,Queretaro,BJX,Bajio,False,GDL,3.3,140.9672510544511,connecting
 QRO,Queretaro,CJS,Ciudad Juarez,False,MTY,3.9931999014868302,1373.8695694162147,connecting
 QRO,Queretaro,OAX,Oaxaca,False,MEX,3.3,542.4913057043896,connecting
 QRO,Queretaro,VER,Veracruz,False,MEX,3.3,448.95157444995647,connecting
@@ -10645,11 +10645,11 @@ QRO,Queretaro,CUL,Culiacan,False,GDL,3.526083482451904,878.2536212617454,connect
 QRO,Queretaro,MZT,Mazatlan,False,GDL,3.3,688.0909766585553,connecting
 QRO,Queretaro,LAP,La Paz,False,GDL,3.756979991442842,1114.5236657256962,connecting
 QRO,Queretaro,CEN,Ciudad Obregon,False,GDL,3.9828440251466635,1235.2101311948647,connecting
-QRO,Queretaro,AGU,Aguascalientes,False,MEX,3.3,252.04703878189696,connecting
+QRO,Queretaro,AGU,Aguascalientes,False,GDL,3.3,252.04703878189696,connecting
 QRO,Queretaro,DGO,Durango,False,GDL,3.3,592.721713405762,connecting
 QRO,Queretaro,TRC,Torreon,False,GDL,3.4344366403536113,641.6991757721569,connecting
-QRO,Queretaro,MLM,Morelia,False,MEX,3.3,122.30422327980104,connecting
-QRO,Queretaro,ZIH,Ixtapa-Zihuatanejo,False,MEX,3.3,361.0833183726683,connecting
+QRO,Queretaro,MLM,Morelia,False,GDL,3.3,122.30422327980104,connecting
+QRO,Queretaro,ZIH,Ixtapa-Zihuatanejo,False,GDL,3.3,361.0833183726683,connecting
 QRO,Queretaro,PXM,Puerto Escondido,False,MEX,3.3,620.2399389755382,connecting
 QRO,Queretaro,VSA,Villahermosa,False,MEX,3.5765827669907977,826.1763165457057,connecting
 QRO,Queretaro,TGZ,Tuxtla Gutierrez,False,MEX,3.621577266334397,878.8338631046225,connecting
@@ -10692,7 +10692,7 @@ BJX,Bajio,CUN,Cancun,False,MEX,4.316271940603553,1515.3279857607608,connecting
 BJX,Bajio,PVR,Puerto Vallarta,False,GDL,3.3,393.67743260650235,connecting
 BJX,Bajio,SJD,Los Cabos,False,GDL,3.631983608143914,882.2067266716386,connecting
 BJX,Bajio,MID,Merida,False,MEX,3.965141385653821,1227.3723587147122,connecting
-BJX,Bajio,QRO,Queretaro,False,MEX,3.3,140.9672510544511,connecting
+BJX,Bajio,QRO,Queretaro,False,GDL,3.3,140.9672510544511,connecting
 BJX,Bajio,BJX,Bajio,False,,0.0,0.0,same airport
 BJX,Bajio,CJS,Ciudad Juarez,False,MTY,3.9642515621425765,1281.5682457102669,connecting
 BJX,Bajio,OAX,Oaxaca,False,MEX,3.3,668.5035142908303,connecting
@@ -10703,11 +10703,11 @@ BJX,Bajio,CUL,Culiacan,False,GDL,3.526083482451904,743.3926350631012,connecting
 BJX,Bajio,MZT,Mazatlan,False,GDL,3.3,548.7992745927286,connecting
 BJX,Bajio,LAP,La Paz,False,GDL,3.756979991442842,974.0653204651868,connecting
 BJX,Bajio,CEN,Ciudad Obregon,False,GDL,3.9828440251466635,1105.7010858839894,connecting
-BJX,Bajio,AGU,Aguascalientes,False,MEX,3.3,117.41148550097965,connecting
+BJX,Bajio,AGU,Aguascalientes,False,GDL,3.3,117.41148550097965,connecting
 BJX,Bajio,DGO,Durango,False,GDL,3.3,468.0358579858246,connecting
 BJX,Bajio,TRC,Torreon,False,MTY,3.420998607771092,545.5194588091841,connecting
-BJX,Bajio,MLM,Morelia,False,MEX,3.3,135.72505480197492,connecting
-BJX,Bajio,ZIH,Ixtapa-Zihuatanejo,False,MEX,3.3,377.1686071704921,connecting
+BJX,Bajio,MLM,Morelia,False,GDL,3.3,135.72505480197492,connecting
+BJX,Bajio,ZIH,Ixtapa-Zihuatanejo,False,GDL,3.3,377.1686071704921,connecting
 BJX,Bajio,PXM,Puerto Escondido,False,MEX,3.3,733.5642635888152,connecting
 BJX,Bajio,VSA,Villahermosa,False,MEX,3.5765827669907977,967.0767046277016,connecting
 BJX,Bajio,TGZ,Tuxtla Gutierrez,False,MEX,3.621577266334397,1017.0553212753358,connecting
@@ -11182,14 +11182,14 @@ CVG,Cincinnati-Northern Kentucky,YHZ,Halifax,False,DTW,4.728595583634927,1859.13
 CVG,Cincinnati-Northern Kentucky,YHM,Hamilton,False,DTW,3.3,606.0706839238519,connecting
 CVG,Cincinnati-Northern Kentucky,YKF,Kitchener-Waterloo,False,DTW,3.3,607.4588383920221,connecting
 CVG,Cincinnati-Northern Kentucky,YXU,London,False,DTW,3.3,532.2087828886046,connecting
-CVG,Cincinnati-Northern Kentucky,YQG,Windsor,False,ORD,3.3,386.75543846141386,connecting
+CVG,Cincinnati-Northern Kentucky,YQG,Windsor,False,DTW,3.3,386.75543846141386,connecting
 CVG,Cincinnati-Northern Kentucky,YQT,Thunder Bay,False,ORD,3.6280138551631187,1101.6227469476755,connecting
 CVG,Cincinnati-Northern Kentucky,YSB,Sudbury,False,DTW,3.3969989458735004,899.2659890186296,connecting
 CVG,Cincinnati-Northern Kentucky,YAM,Sault Ste. Marie,False,DTW,3.3395625642530042,826.9694429058475,connecting
 CVG,Cincinnati-Northern Kentucky,ATL,Atlanta Hartsfield-Jackson,False,CLT,3.4072341252724225,601.7377350837163,connecting
 CVG,Cincinnati-Northern Kentucky,LAX,Los Angeles,False,ORD,6.166988588301635,3051.010786522801,connecting
 CVG,Cincinnati-Northern Kentucky,ORD,Chicago O'Hare,True,,1.55,425.1524375317389,direct
-CVG,Cincinnati-Northern Kentucky,MDW,Chicago Midway,False,ORD,3.3,401.0292126238057,connecting
+CVG,Cincinnati-Northern Kentucky,MDW,Chicago Midway,False,DTW,3.3,401.0292126238057,connecting
 CVG,Cincinnati-Northern Kentucky,DFW,Dallas-Fort Worth,False,ORD,4.3231701272856595,1304.7475509814883,connecting
 CVG,Cincinnati-Northern Kentucky,DEN,Denver,False,ORD,4.48902795378698,1716.456000042194,connecting
 CVG,Cincinnati-Northern Kentucky,JFK,New York JFK,False,DTW,3.7463102047047783,945.7477885222722,connecting
@@ -11205,12 +11205,12 @@ CVG,Cincinnati-Northern Kentucky,RDU,Raleigh-Durham,False,CLT,3.4072341252724225
 CVG,Cincinnati-Northern Kentucky,BNA,Nashville,False,CLT,3.500369714375554,370.05222221753604,connecting
 CVG,Cincinnati-Northern Kentucky,DTW,Detroit Metro,True,,1.55,369.18735547112783,direct
 CVG,Cincinnati-Northern Kentucky,MSP,Minneapolis-Saint Paul,False,ORD,3.405308153773943,958.8724270213819,connecting
-CVG,Cincinnati-Northern Kentucky,MKE,Milwaukee,False,ORD,3.3,511.1073785333249,connecting
+CVG,Cincinnati-Northern Kentucky,MKE,Milwaukee,False,DTW,3.3,511.1073785333249,connecting
 CVG,Cincinnati-Northern Kentucky,STL,St. Louis,False,ORD,3.3,494.9051657545094,connecting
 CVG,Cincinnati-Northern Kentucky,MCI,Kansas City,False,ORD,3.5385496595146506,865.9993337545311,connecting
 CVG,Cincinnati-Northern Kentucky,SDF,Louisville,False,ORD,3.3123186697713582,134.41399718178366,connecting
 CVG,Cincinnati-Northern Kentucky,CMH,Columbus,False,DTW,3.3,185.7599182320044,connecting
-CVG,Cincinnati-Northern Kentucky,IND,Indianapolis,False,ORD,3.3,158.3283697362887,connecting
+CVG,Cincinnati-Northern Kentucky,IND,Indianapolis,False,DTW,3.3,158.3283697362887,connecting
 CVG,Cincinnati-Northern Kentucky,IAH,Houston Intercontinental,False,ORD,4.566286703156739,1401.5432493944465,connecting
 CVG,Cincinnati-Northern Kentucky,PHX,Phoenix Sky Harbor,False,ORD,5.570813558343968,2519.9924218248525,connecting
 CVG,Cincinnati-Northern Kentucky,LAS,Las Vegas,False,ORD,5.715119850167191,2694.409862348226,connecting
@@ -11234,12 +11234,12 @@ CVG,Cincinnati-Northern Kentucky,BHM,Birmingham,False,CLT,3.544346515677232,637.
 CVG,Cincinnati-Northern Kentucky,GSP,Greenville-Spartanburg,False,CLT,3.4072341252724225,510.424942929431,connecting
 CVG,Cincinnati-Northern Kentucky,OMA,Omaha,False,ORD,3.564204451157109,985.3807591523046,connecting
 CVG,Cincinnati-Northern Kentucky,DSM,Des Moines,False,ORD,3.3352055280008024,810.9615419836413,connecting
-CVG,Cincinnati-Northern Kentucky,GRR,Grand Rapids,False,ORD,3.3,432.09756496268557,connecting
+CVG,Cincinnati-Northern Kentucky,GRR,Grand Rapids,False,DTW,3.3,432.09756496268557,connecting
 CVG,Cincinnati-Northern Kentucky,FAR,Fargo,False,ORD,3.8413886533788295,1317.3397262636006,connecting
 CVG,Cincinnati-Northern Kentucky,FSD,Sioux Falls,False,ORD,3.6554584852919088,1125.8514340035872,connecting
 CVG,Cincinnati-Northern Kentucky,XNA,Northwest Arkansas,False,ORD,3.7735713773949353,901.9305159227166,connecting
 BUF,Buffalo Niagara,YYZ,Toronto Pearson,True,,1.55,109.2491111827664,direct
-BUF,Buffalo Niagara,YTZ,Toronto Billy Bishop,False,YOW,3.3,93.49473350097855,connecting
+BUF,Buffalo Niagara,YTZ,Toronto Billy Bishop,False,DTW,3.3,93.49473350097855,connecting
 BUF,Buffalo Niagara,YUL,Montreal Trudeau,False,YOW,3.3,487.1300108563989,connecting
 BUF,Buffalo Niagara,YHU,Montreal Saint-Hubert,False,YOW,3.3,511.16859733524615,connecting
 BUF,Buffalo Niagara,YVR,Vancouver,False,DTW,6.590431029374102,3447.05107205516,connecting
@@ -11263,8 +11263,8 @@ BUF,Buffalo Niagara,YQM,Moncton,False,YYZ,4.220824736739483,1166.7334195660155,c
 BUF,Buffalo Niagara,YYT,St. John's,False,YOW,4.904783018210514,2087.4385747448887,connecting
 BUF,Buffalo Niagara,YDF,Deer Lake,False,YYZ,4.9490463888088625,1779.9479350893885,connecting
 BUF,Buffalo Niagara,YYR,Goose Bay,False,YOW,4.473419534747395,1773.4460815883317,connecting
-BUF,Buffalo Niagara,YHM,Hamilton,False,YOW,3.3,101.10223690133992,connecting
-BUF,Buffalo Niagara,YKF,Kitchener-Waterloo,False,YOW,3.3,145.44964153975272,connecting
+BUF,Buffalo Niagara,YHM,Hamilton,False,DTW,3.3,101.10223690133992,connecting
+BUF,Buffalo Niagara,YKF,Kitchener-Waterloo,False,DTW,3.3,145.44964153975272,connecting
 BUF,Buffalo Niagara,YXU,London,False,DTW,3.3,197.2548008976683,connecting
 BUF,Buffalo Niagara,YQG,Windsor,False,DTW,3.3,353.4192608952132,connecting
 BUF,Buffalo Niagara,YQT,Thunder Bay,False,YYZ,3.861837266336214,1019.4687531218733,connecting
@@ -11497,10 +11497,10 @@ ALB,Albany,ORD,Chicago O'Hare,False,EWR,4.157595691322931,1160.7947265637115,con
 ALB,Albany,DFW,Dallas-Fort Worth,False,EWR,5.438113429443302,2305.3953107736056,connecting
 ALB,Albany,DEN,Denver,False,EWR,5.8916589903045775,2584.24623394858,connecting
 ALB,Albany,JFK,New York JFK,True,,1.55,234.29622496993773,direct
-ALB,Albany,LGA,New York LaGuardia,False,EWR,3.3,219.2919605769181,connecting
+ALB,Albany,LGA,New York LaGuardia,False,BOS,3.3,219.2919605769181,connecting
 ALB,Albany,EWR,Newark Liberty,True,,1.55,231.00923016287354,direct
 ALB,Albany,BOS,Boston Logan,True,,1.55,232.6061140169403,direct
-ALB,Albany,PHL,Philadelphia,False,EWR,3.3,341.4526507099952,connecting
+ALB,Albany,PHL,Philadelphia,False,BOS,3.3,341.4526507099952,connecting
 ALB,Albany,DCA,Washington National,False,EWR,3.3,511.850703807985,connecting
 ALB,Albany,IAD,Washington Dulles,False,EWR,3.3,521.9790349675587,connecting
 ALB,Albany,BWI,Baltimore-Washington,False,EWR,3.3,464.25882967998456,connecting
@@ -11523,8 +11523,8 @@ ALB,Albany,PIT,Pittsburgh,False,EWR,3.3743152659702838,590.3493769093228,connect
 ALB,Albany,ROC,Rochester,False,EWR,3.3,317.77020328600224,connecting
 ALB,Albany,SYR,Syracuse,False,EWR,3.3,191.9142971513941,connecting
 ALB,Albany,ALB,Albany,False,,0.0,0.0,same airport
-ALB,Albany,BDL,Hartford Bradley,False,EWR,3.3,128.64645359096173,connecting
-ALB,Albany,PVD,Providence,False,EWR,3.3,226.16066678021693,connecting
+ALB,Albany,BDL,Hartford Bradley,False,BOS,3.3,128.64645359096173,connecting
+ALB,Albany,PVD,Providence,False,BOS,3.3,226.16066678021693,connecting
 ALB,Albany,PWM,Portland Maine,False,BOS,3.3,300.1595192615494,connecting
 ALB,Albany,RIC,Richmond,False,EWR,3.3,655.0993340626349,connecting
 ALB,Albany,ORF,Norfolk,False,EWR,3.307359646629355,682.314221046993,connecting
@@ -11552,10 +11552,10 @@ BDL,Hartford Bradley,ORD,Chicago O'Hare,False,EWR,4.157595691322931,1257.2325711
 BDL,Hartford Bradley,DFW,Dallas-Fort Worth,False,EWR,5.438113429443302,2363.1915080259596,connecting
 BDL,Hartford Bradley,DEN,Denver,False,EWR,5.8916589903045775,2683.1283302640686,connecting
 BDL,Hartford Bradley,JFK,New York JFK,True,,1.55,170.8381254896422,direct
-BDL,Hartford Bradley,LGA,New York LaGuardia,False,EWR,3.3,163.0075081328015,connecting
+BDL,Hartford Bradley,LGA,New York LaGuardia,False,BOS,3.3,163.0075081328015,connecting
 BDL,Hartford Bradley,EWR,Newark Liberty,True,,1.55,186.5780853117023,direct
 BDL,Hartford Bradley,BOS,Boston Logan,True,,1.55,145.8925300649199,direct
-BDL,Hartford Bradley,PHL,Philadelphia,False,EWR,3.3,314.53964108645454,connecting
+BDL,Hartford Bradley,PHL,Philadelphia,False,BOS,3.3,314.53964108645454,connecting
 BDL,Hartford Bradley,DCA,Washington National,False,EWR,3.3,503.87568233394506,connecting
 BDL,Hartford Bradley,IAD,Washington Dulles,False,EWR,3.3,522.709440266573,connecting
 BDL,Hartford Bradley,BWI,Baltimore-Washington,False,EWR,3.3,455.5724075383562,connecting
@@ -11577,9 +11577,9 @@ BDL,Hartford Bradley,CUN,Cancun,False,EWR,5.7899898507904375,2677.304544152583,c
 BDL,Hartford Bradley,PIT,Pittsburgh,False,EWR,3.3743152659702838,651.4380493036616,connecting
 BDL,Hartford Bradley,ROC,Rochester,False,EWR,3.3,429.2923276938788,connecting
 BDL,Hartford Bradley,SYR,Syracuse,False,EWR,3.3,309.29370337388207,connecting
-BDL,Hartford Bradley,ALB,Albany,False,EWR,3.3,128.64645359096173,connecting
+BDL,Hartford Bradley,ALB,Albany,False,BOS,3.3,128.64645359096173,connecting
 BDL,Hartford Bradley,BDL,Hartford Bradley,False,,0.0,0.0,same airport
-BDL,Hartford Bradley,PVD,Providence,False,EWR,3.3,106.68931482631332,connecting
+BDL,Hartford Bradley,PVD,Providence,False,BOS,3.3,106.68931482631332,connecting
 BDL,Hartford Bradley,PWM,Portland Maine,False,BOS,3.3,271.19915805980565,connecting
 BDL,Hartford Bradley,RIC,Richmond,False,EWR,3.3,632.474358367155,connecting
 BDL,Hartford Bradley,ORF,Norfolk,False,EWR,3.307359646629355,636.9852260992427,connecting
@@ -11607,10 +11607,10 @@ PVD,Providence,ORD,Chicago O'Hare,False,EWR,4.157595691322931,1363.1366666915956
 PVD,Providence,DFW,Dallas-Fort Worth,False,EWR,5.438113429443302,2456.3906912325515,connecting
 PVD,Providence,DEN,Denver,False,EWR,5.8916589903045775,2789.1178316876767,connecting
 PVD,Providence,JFK,New York JFK,True,,1.55,230.56767487909576,direct
-PVD,Providence,LGA,New York LaGuardia,False,EWR,3.3,229.98418355685988,connecting
+PVD,Providence,LGA,New York LaGuardia,False,BOS,3.3,229.98418355685988,connecting
 PVD,Providence,EWR,Newark Liberty,True,,1.55,256.91607122392077,direct
 PVD,Providence,BOS,Boston Logan,True,,1.55,79.27528084196834,direct
-PVD,Providence,PHL,Philadelphia,False,EWR,3.3,381.2263235084304,connecting
+PVD,Providence,PHL,Philadelphia,False,BOS,3.3,381.2263235084304,connecting
 PVD,Providence,DCA,Washington National,False,EWR,3.3,573.0665635988886,connecting
 PVD,Providence,IAD,Washington Dulles,False,EWR,3.3,596.4291245791416,connecting
 PVD,Providence,BWI,Baltimore-Washington,False,EWR,3.3,525.9560195962978,connecting
@@ -11632,8 +11632,8 @@ PVD,Providence,CUN,Cancun,False,EWR,5.7899898507904375,2718.2815009377314,connec
 PVD,Providence,PIT,Pittsburgh,False,EWR,3.3743152659702838,749.9488602224385,connecting
 PVD,Providence,ROC,Rochester,False,EWR,3.3,535.3538680225437,connecting
 PVD,Providence,SYR,Syracuse,False,EWR,3.3,413.7683979690869,connecting
-PVD,Providence,ALB,Albany,False,EWR,3.3,226.16066678021693,connecting
-PVD,Providence,BDL,Hartford Bradley,False,EWR,3.3,106.68931482631332,connecting
+PVD,Providence,ALB,Albany,False,BOS,3.3,226.16066678021693,connecting
+PVD,Providence,BDL,Hartford Bradley,False,BOS,3.3,106.68931482631332,connecting
 PVD,Providence,PVD,Providence,False,,0.0,0.0,same airport
 PVD,Providence,PWM,Portland Maine,False,BOS,3.3,232.47784689232483,connecting
 PVD,Providence,RIC,Richmond,False,EWR,3.3,688.697360525921,connecting
@@ -11641,7 +11641,7 @@ PVD,Providence,ORF,Norfolk,False,EWR,3.307359646629355,675.7717643226371,connect
 PWM,Portland Maine,YYZ,Toronto Pearson,False,YUL,3.3679919543765795,748.9660294132276,connecting
 PWM,Portland Maine,YTZ,Toronto Billy Bishop,False,YUL,3.350719848927245,730.8995503332758,connecting
 PWM,Portland Maine,YUL,Montreal Trudeau,True,,1.55,339.17104825491117,direct
-PWM,Portland Maine,YHU,Montreal Saint-Hubert,False,YUL,3.3,322.2458142426757,connecting
+PWM,Portland Maine,YHU,Montreal Saint-Hubert,False,BOS,3.3,322.2458142426757,connecting
 PWM,Portland Maine,YVR,Vancouver,False,YUL,7.240126139083637,4015.4551215859356,connecting
 PWM,Portland Maine,YYC,Calgary,False,YUL,6.414168541966228,3340.19863529018,connecting
 PWM,Portland Maine,YEG,Edmonton,False,YUL,6.3704267019152,3307.196263109268,connecting
@@ -12426,7 +12426,7 @@ GRR,Grand Rapids,YDF,Deer Lake,False,YYZ,4.991118110128201,2267.0722676368664,co
 GRR,Grand Rapids,YHM,Hamilton,False,DTW,3.3,455.2950281493037,connecting
 GRR,Grand Rapids,YKF,Kitchener-Waterloo,False,DTW,3.3,422.06110189764024,connecting
 GRR,Grand Rapids,YXU,London,False,DTW,3.3,355.9094630955064,connecting
-GRR,Grand Rapids,YQG,Windsor,False,ORD,3.3,220.69835969117742,connecting
+GRR,Grand Rapids,YQG,Windsor,False,DTW,3.3,220.69835969117742,connecting
 GRR,Grand Rapids,YQT,Thunder Bay,False,ORD,3.6280138551631187,678.1507815180296,connecting
 GRR,Grand Rapids,YSB,Sudbury,False,YYZ,3.3420717213193383,558.7916077613545,connecting
 GRR,Grand Rapids,YAM,Sault Ste. Marie,False,DTW,3.3395625642530042,408.68920358194987,connecting
@@ -12437,7 +12437,7 @@ GRR,Grand Rapids,YVO,Val-d'Or,False,YYZ,3.4103369618460126,832.9646097946106,con
 GRR,Grand Rapids,ATL,Atlanta Hartsfield-Jackson,False,DTW,3.918482779868076,1031.865312432694,connecting
 GRR,Grand Rapids,LAX,Los Angeles,False,ORD,6.166988588301635,3010.219266797936,connecting
 GRR,Grand Rapids,ORD,Chicago O'Hare,True,,1.55,220.13696491393864,direct
-GRR,Grand Rapids,MDW,Chicago Midway,False,ORD,3.3,219.943062039601,connecting
+GRR,Grand Rapids,MDW,Chicago Midway,False,DTW,3.3,219.943062039601,connecting
 GRR,Grand Rapids,DFW,Dallas-Fort Worth,False,ORD,4.3231701272856595,1498.2233448157954,connecting
 GRR,Grand Rapids,DEN,Denver,False,ORD,4.48902795378698,1629.3306865466134,connecting
 GRR,Grand Rapids,JFK,New York JFK,False,YYZ,3.509376451718914,1004.5345927638591,connecting
@@ -12449,12 +12449,12 @@ GRR,Grand Rapids,CLT,Charlotte Douglas,False,DTW,3.73294099077175,939.1993447078
 GRR,Grand Rapids,BNA,Nashville,False,ORD,3.5534776240214097,757.5488068088766,connecting
 GRR,Grand Rapids,DTW,Detroit Metro,True,,1.55,192.30691469915604,direct
 GRR,Grand Rapids,MSP,Minneapolis-Saint Paul,False,ORD,3.405308153773943,655.7557046924827,connecting
-GRR,Grand Rapids,MKE,Milwaukee,False,ORD,3.3,193.44886616342947,connecting
+GRR,Grand Rapids,MKE,Milwaukee,False,DTW,3.3,193.44886616342947,connecting
 GRR,Grand Rapids,STL,St. Louis,False,ORD,3.3,614.3588291355069,connecting
 GRR,Grand Rapids,MCI,Kansas City,False,ORD,3.5385496595146506,866.535810103273,connecting
 GRR,Grand Rapids,SDF,Louisville,False,ORD,3.3123186697713582,523.6381002282563,connecting
 GRR,Grand Rapids,CMH,Columbus,False,DTW,3.3,388.39064265592776,connecting
-GRR,Grand Rapids,IND,Indianapolis,False,ORD,3.3,357.6176286745798,connecting
+GRR,Grand Rapids,IND,Indianapolis,False,DTW,3.3,357.6176286745798,connecting
 GRR,Grand Rapids,IAH,Houston Intercontinental,False,ORD,4.566286703156739,1678.122824998546,connecting
 GRR,Grand Rapids,PHX,Phoenix Sky Harbor,False,ORD,5.570813558343968,2528.9874997160905,connecting
 GRR,Grand Rapids,LAS,Las Vegas,False,ORD,5.715119850167191,2637.420706051977,connecting
@@ -12467,7 +12467,7 @@ GRR,Grand Rapids,MTY,Monterrey,False,ORD,5.334147548348465,2318.329676896131,con
 GRR,Grand Rapids,CUN,Cancun,False,ORD,5.591668414647602,2432.2478456323956,connecting
 GRR,Grand Rapids,CLE,Cleveland Hopkins,False,DTW,3.3,344.0226842626748,connecting
 GRR,Grand Rapids,PIT,Pittsburgh,False,DTW,3.3,513.217906560847,connecting
-GRR,Grand Rapids,CVG,Cincinnati-Northern Kentucky,False,ORD,3.3,432.09756496268557,connecting
+GRR,Grand Rapids,CVG,Cincinnati-Northern Kentucky,False,DTW,3.3,432.09756496268557,connecting
 GRR,Grand Rapids,BUF,Buffalo Niagara,False,DTW,3.3,552.9235171255693,connecting
 GRR,Grand Rapids,ROC,Rochester,False,YYZ,3.3420717213193383,638.7339197767877,connecting
 GRR,Grand Rapids,SYR,Syracuse,False,YYZ,3.3420717213193383,765.8526808701794,connecting
@@ -12841,22 +12841,22 @@ BUR,Burbank,SFO,San Francisco,True,,1.6402661029233037,525.0182043971089,direct
 BUR,Burbank,OAK,Oakland,False,SFO,3.390266102923303,522.6402029408009,connecting
 BUR,Burbank,SJC,San Jose,False,LAX,3.354735445680687,476.8186727093523,connecting
 BUR,Burbank,SMF,Sacramento,False,SFO,3.390266102923303,577.2724442174583,connecting
-BUR,Burbank,SAN,San Diego,False,LAX,3.3,195.6779585597931,connecting
-BUR,Burbank,FAT,Fresno,False,LAX,3.3,311.69978545986766,connecting
+BUR,Burbank,SAN,San Diego,False,LAS,3.3,195.6779585597931,connecting
+BUR,Burbank,FAT,Fresno,False,LAS,3.3,311.69978545986766,connecting
 BUR,Burbank,ANC,Anchorage,False,SFO,6.79580603311662,3747.3161129459627,connecting
 BUR,Burbank,MEX,Mexico City,False,LAS,5.7108770622509955,2513.038370343144,connecting
 BUR,Burbank,GDL,Guadalajara,False,LAS,5.28530828862298,2121.3421690627715,connecting
 BUR,Burbank,MTY,Monterrey,False,LAS,4.984798536077562,1987.2472170203373,connecting
 BUR,Burbank,CUN,Cancun,False,LAS,6.665130957619188,3410.6420527785885,connecting
-BUR,Burbank,TIJ,Tijuana,False,LAX,3.3,225.11576385302604,connecting
+BUR,Burbank,TIJ,Tijuana,False,LAS,3.3,225.11576385302604,connecting
 BUR,Burbank,HMO,Hermosillo,False,LAS,3.807065523112287,894.5677765324705,connecting
 BUR,Burbank,BOI,Boise,False,LAS,3.770436013615037,1057.376916961108,connecting
 BUR,Burbank,RNO,Reno-Tahoe,False,SFO,3.390266102923303,602.3300197876941,connecting
 BUR,Burbank,BUR,Burbank,False,,0.0,0.0,same airport
-BUR,Burbank,LGB,Long Beach,False,LAX,3.3,46.67029389080623,connecting
-BUR,Burbank,ONT,Ontario California,False,LAX,3.3,71.5565906318979,connecting
-BUR,Burbank,SNA,Orange County,False,LAX,3.3,73.86073478522555,connecting
-BUR,Burbank,PSP,Palm Springs,False,LAX,3.3,175.60720021179736,connecting
+BUR,Burbank,LGB,Long Beach,False,LAS,3.3,46.67029389080623,connecting
+BUR,Burbank,ONT,Ontario California,False,LAS,3.3,71.5565906318979,connecting
+BUR,Burbank,SNA,Orange County,False,LAS,3.3,73.86073478522555,connecting
+BUR,Burbank,PSP,Palm Springs,False,LAS,3.3,175.60720021179736,connecting
 LGB,Long Beach,YYZ,Toronto Pearson,False,LAS,6.555761531060438,3480.770685110642,connecting
 LGB,Long Beach,YUL,Montreal Trudeau,False,LAS,7.135198065054957,3960.128259416742,connecting
 LGB,Long Beach,YVR,Vancouver,False,SFO,4.466186274019366,1759.59474388204,connecting
@@ -12888,22 +12888,22 @@ LGB,Long Beach,SFO,San Francisco,True,,1.6945540141604265,569.5342916115497,dire
 LGB,Long Beach,OAK,Oakland,False,LAX,3.4109753035825463,567.5757531273287,connecting
 LGB,Long Beach,SJC,San Jose,False,LAX,3.354735445680687,521.5741928394456,connecting
 LGB,Long Beach,SMF,Sacramento,False,SFO,3.4445540141604267,623.785080586203,connecting
-LGB,Long Beach,SAN,San Diego,False,LAX,3.3,149.87327720157722,connecting
-LGB,Long Beach,FAT,Fresno,False,LAX,3.3,358.3590233060967,connecting
+LGB,Long Beach,SAN,San Diego,False,LAS,3.3,149.87327720157722,connecting
+LGB,Long Beach,FAT,Fresno,False,LAS,3.3,358.3590233060967,connecting
 LGB,Long Beach,ANC,Anchorage,False,SFO,6.850093944353743,3793.926653051938,connecting
 LGB,Long Beach,MEX,Mexico City,False,LAS,5.7108770622509955,2472.701494654239,connecting
 LGB,Long Beach,GDL,Guadalajara,False,LAS,5.28530828862298,2078.7440773154235,connecting
 LGB,Long Beach,MTY,Monterrey,False,LAS,4.984798536077562,1953.1275035308158,connecting
 LGB,Long Beach,CUN,Cancun,False,LAS,6.665130957619188,3379.9648729730043,connecting
-LGB,Long Beach,TIJ,Tijuana,False,LAX,3.3,179.5482895214769,connecting
+LGB,Long Beach,TIJ,Tijuana,False,LAS,3.3,179.5482895214769,connecting
 LGB,Long Beach,HMO,Hermosillo,False,LAS,3.807065523112287,853.8041381760356,connecting
 LGB,Long Beach,BOI,Boise,False,LAS,3.770436013615037,1096.5466832665707,connecting
 LGB,Long Beach,RNO,Reno-Tahoe,False,LAS,3.4272887098365468,647.9555209929915,connecting
-LGB,Long Beach,BUR,Burbank,False,LAX,3.3,46.67029389080623,connecting
+LGB,Long Beach,BUR,Burbank,False,LAS,3.3,46.67029389080623,connecting
 LGB,Long Beach,LGB,Long Beach,False,,0.0,0.0,same airport
-LGB,Long Beach,ONT,Ontario California,False,LAX,3.3,57.274306645279665,connecting
-LGB,Long Beach,SNA,Orange County,False,LAX,3.3,30.592526980770245,connecting
-LGB,Long Beach,PSP,Palm Springs,False,LAX,3.3,151.9531780589566,connecting
+LGB,Long Beach,ONT,Ontario California,False,LAS,3.3,57.274306645279665,connecting
+LGB,Long Beach,SNA,Orange County,False,LAS,3.3,30.592526980770245,connecting
+LGB,Long Beach,PSP,Palm Springs,False,LAS,3.3,151.9531780589566,connecting
 ONT,Ontario California,YYZ,Toronto Pearson,False,PHX,6.511238421199282,3423.5381201505074,connecting
 ONT,Ontario California,YUL,Montreal Trudeau,False,PHX,7.113183258149684,3903.062279847595,connecting
 ONT,Ontario California,YVR,Vancouver,False,LAS,4.697457704249494,1745.05885563985,connecting
@@ -12936,24 +12936,24 @@ ONT,Ontario California,SFO,San Francisco,False,LAX,3.413004012584126,585.2047602
 ONT,Ontario California,OAK,Oakland,False,LAX,3.4109753035825463,581.6029866340609,connecting
 ONT,Ontario California,SJC,San Jose,False,LAX,3.354735445680687,536.5062479175929,connecting
 ONT,Ontario California,SMF,Sacramento,False,LAX,3.4822945123009266,627.3021494046558,connecting
-ONT,Ontario California,SAN,San Diego,False,LAX,3.3,151.82010223010874,connecting
-ONT,Ontario California,FAT,Fresno,False,LAX,3.3,358.14966870948024,connecting
+ONT,Ontario California,SAN,San Diego,False,LAS,3.3,151.82010223010874,connecting
+ONT,Ontario California,FAT,Fresno,False,LAS,3.3,358.14966870948024,connecting
 ONT,Ontario California,ANC,Anchorage,False,LAS,7.2659181245333695,3793.5652754300277,connecting
 ONT,Ontario California,MEX,Mexico City,False,PHX,5.295119488864458,2447.358428478641,connecting
 ONT,Ontario California,GDL,Guadalajara,False,PHX,4.876043524652836,2059.13459400196,connecting
 ONT,Ontario California,MTY,Monterrey,False,PHX,4.579412569290599,1916.917604833155,connecting
 ONT,Ontario California,CUN,Cancun,False,PHX,6.287478286129902,3339.2984457984026,connecting
-ONT,Ontario California,TIJ,Tijuana,False,LAX,3.3,178.36460801737272,connecting
+ONT,Ontario California,TIJ,Tijuana,False,LAS,3.3,178.36460801737272,connecting
 ONT,Ontario California,SJD,Los Cabos,False,PHX,4.25656792785518,1434.6964095100022,connecting
 ONT,Ontario California,HMO,Hermosillo,False,PHX,3.434587450776408,830.0420869443108,connecting
 ONT,Ontario California,CJS,Ciudad Juarez,False,PHX,3.518913761664459,1077.2038532512158,connecting
 ONT,Ontario California,BOI,Boise,False,LAS,3.770436013615037,1063.9661579097276,connecting
 ONT,Ontario California,RNO,Reno-Tahoe,False,LAS,3.4272887098365468,635.2100690242788,connecting
-ONT,Ontario California,BUR,Burbank,False,LAX,3.3,71.5565906318979,connecting
-ONT,Ontario California,LGB,Long Beach,False,LAX,3.3,57.274306645279665,connecting
+ONT,Ontario California,BUR,Burbank,False,LAS,3.3,71.5565906318979,connecting
+ONT,Ontario California,LGB,Long Beach,False,LAS,3.3,57.274306645279665,connecting
 ONT,Ontario California,ONT,Ontario California,False,,0.0,0.0,same airport
-ONT,Ontario California,SNA,Orange County,False,LAX,3.3,48.94850058698878,connecting
-ONT,Ontario California,PSP,Palm Springs,False,LAX,3.3,104.05211063902095,connecting
+ONT,Ontario California,SNA,Orange County,False,LAS,3.3,48.94850058698878,connecting
+ONT,Ontario California,PSP,Palm Springs,False,LAS,3.3,104.05211063902095,connecting
 ONT,Ontario California,COS,Colorado Springs,False,PHX,3.917629048546824,1267.659650872702,connecting
 ONT,Ontario California,CUU,Chihuahua,False,PHX,3.7867126237748305,1253.6362137968779,connecting
 ONT,Ontario California,LAP,La Paz,False,PHX,4.120237584444839,1313.2850825276028,connecting
@@ -12990,24 +12990,24 @@ SNA,Orange County,SFO,San Francisco,False,LAX,3.413004012584126,598.678518178814
 SNA,Orange County,OAK,Oakland,False,LAX,3.4109753035825463,596.4327268923755,connecting
 SNA,Orange County,SJC,San Jose,False,LAX,3.354735445680687,550.5580689119547,connecting
 SNA,Orange County,SMF,Sacramento,False,LAX,3.4822945123009266,650.3583436264086,connecting
-SNA,Orange County,SAN,San Diego,False,LAX,3.3,122.11457613562266,connecting
-SNA,Orange County,FAT,Fresno,False,LAX,3.3,383.50580818150036,connecting
+SNA,Orange County,SAN,San Diego,False,LAS,3.3,122.11457613562266,connecting
+SNA,Orange County,FAT,Fresno,False,LAS,3.3,383.50580818150036,connecting
 SNA,Orange County,ANC,Anchorage,False,LAS,7.2659181245333695,3819.8906791643544,connecting
 SNA,Orange County,MEX,Mexico City,False,PHX,5.321875161392095,2442.2029258009834,connecting
 SNA,Orange County,GDL,Guadalajara,False,PHX,4.902799197180472,2048.676635635847,connecting
 SNA,Orange County,MTY,Monterrey,False,PHX,4.606168241818235,1922.880436924289,connecting
 SNA,Orange County,CUN,Cancun,False,PHX,6.314233958657539,3350.321737319588,connecting
-SNA,Orange County,TIJ,Tijuana,False,LAX,3.3,151.36733171371606,connecting
+SNA,Orange County,TIJ,Tijuana,False,LAS,3.3,151.36733171371606,connecting
 SNA,Orange County,SJD,Los Cabos,False,PHX,4.283323600382816,1414.4480352692287,connecting
 SNA,Orange County,HMO,Hermosillo,False,PHX,3.4613431233040437,823.3338516142741,connecting
 SNA,Orange County,CJS,Ciudad Juarez,False,PHX,3.545669434192095,1094.0628660285508,connecting
 SNA,Orange County,BOI,Boise,False,LAS,3.770436013615037,1108.760573864919,connecting
 SNA,Orange County,RNO,Reno-Tahoe,False,LAS,3.4272887098365468,669.3335245512966,connecting
-SNA,Orange County,BUR,Burbank,False,LAX,3.3,73.86073478522555,connecting
-SNA,Orange County,LGB,Long Beach,False,LAX,3.3,30.592526980770245,connecting
-SNA,Orange County,ONT,Ontario California,False,LAX,3.3,48.94850058698878,connecting
+SNA,Orange County,BUR,Burbank,False,LAS,3.3,73.86073478522555,connecting
+SNA,Orange County,LGB,Long Beach,False,LAS,3.3,30.592526980770245,connecting
+SNA,Orange County,ONT,Ontario California,False,LAS,3.3,48.94850058698878,connecting
 SNA,Orange County,SNA,Orange County,False,,0.0,0.0,same airport
-SNA,Orange County,PSP,Palm Springs,False,LAX,3.3,127.0324221688988,connecting
+SNA,Orange County,PSP,Palm Springs,False,LAS,3.3,127.0324221688988,connecting
 SNA,Orange County,COS,Colorado Springs,False,PHX,3.94438472107446,1309.7068574595896,connecting
 SNA,Orange County,CUU,Chihuahua,False,PHX,3.8134682963024664,1258.9446613545692,connecting
 SNA,Orange County,LAP,La Paz,False,PHX,4.146993256972475,1292.9680767802731,connecting
@@ -13044,23 +13044,23 @@ PSP,Palm Springs,SFO,San Francisco,False,LAX,3.413004012584126,677.0598784766469
 PSP,Palm Springs,OAK,Oakland,False,LAX,3.4109753035825463,672.1161003882706,connecting
 PSP,Palm Springs,SJC,San Jose,False,LAX,3.354735445680687,628.1196957786937,connecting
 PSP,Palm Springs,SMF,Sacramento,False,LAX,3.4822945123009266,707.2018429430669,connecting
-PSP,Palm Springs,SAN,San Diego,False,LAX,3.3,137.5601256377039,connecting
-PSP,Palm Springs,FAT,Fresno,False,LAX,3.3,438.42907155918164,connecting
+PSP,Palm Springs,SAN,San Diego,False,LAS,3.3,137.5601256377039,connecting
+PSP,Palm Springs,FAT,Fresno,False,LAS,3.3,438.42907155918164,connecting
 PSP,Palm Springs,ANC,Anchorage,False,LAS,7.2659181245333695,3862.68150081457,connecting
 PSP,Palm Springs,MEX,Mexico City,False,PHX,5.209322345463383,2352.070451009391,connecting
 PSP,Palm Springs,GDL,Guadalajara,False,PHX,4.790246381251761,1969.3144987738906,connecting
 PSP,Palm Springs,MTY,Monterrey,False,PHX,4.493615425889524,1814.6460290866555,connecting
 PSP,Palm Springs,CUN,Cancun,False,PHX,6.201681142728827,3235.5048756810706,connecting
-PSP,Palm Springs,TIJ,Tijuana,False,LAX,3.3,149.63674680033841,connecting
+PSP,Palm Springs,TIJ,Tijuana,False,LAS,3.3,149.63674680033841,connecting
 PSP,Palm Springs,SJD,Los Cabos,False,PHX,4.170770784454104,1359.0478645542426,connecting
 PSP,Palm Springs,HMO,Hermosillo,False,PHX,3.3487903073753325,738.0773254035336,connecting
 PSP,Palm Springs,CJS,Ciudad Juarez,False,PHX,3.4331166182633837,973.2456106005811,connecting
 PSP,Palm Springs,BOI,Boise,False,LAS,3.770436013615037,1082.7291285795707,connecting
 PSP,Palm Springs,RNO,Reno-Tahoe,False,LAS,3.4272887098365468,694.1517369856498,connecting
-PSP,Palm Springs,BUR,Burbank,False,LAX,3.3,175.60720021179736,connecting
-PSP,Palm Springs,LGB,Long Beach,False,LAX,3.3,151.9531780589566,connecting
-PSP,Palm Springs,ONT,Ontario California,False,LAX,3.3,104.05211063902095,connecting
-PSP,Palm Springs,SNA,Orange County,False,LAX,3.3,127.0324221688988,connecting
+PSP,Palm Springs,BUR,Burbank,False,LAS,3.3,175.60720021179736,connecting
+PSP,Palm Springs,LGB,Long Beach,False,LAS,3.3,151.9531780589566,connecting
+PSP,Palm Springs,ONT,Ontario California,False,LAS,3.3,104.05211063902095,connecting
+PSP,Palm Springs,SNA,Orange County,False,LAS,3.3,127.0324221688988,connecting
 PSP,Palm Springs,PSP,Palm Springs,False,,0.0,0.0,same airport
 PSP,Palm Springs,COS,Colorado Springs,False,PHX,3.831831905145749,1192.37372451467,connecting
 PSP,Palm Springs,CUU,Chihuahua,False,PHX,3.700915480373755,1151.8561679953693,connecting
@@ -13600,8 +13600,8 @@ AGU,Aguascalientes,CUN,Cancun,False,MEX,4.316271940603553,1599.9552717507497,con
 AGU,Aguascalientes,PVR,Puerto Vallarta,False,GDL,3.3,325.06694805450525,connecting
 AGU,Aguascalientes,SJD,Los Cabos,False,GDL,3.631983608143914,777.6198669066675,connecting
 AGU,Aguascalientes,MID,Merida,False,MEX,3.965141385653821,1313.8141493651685,connecting
-AGU,Aguascalientes,QRO,Queretaro,False,MEX,3.3,252.04703878189696,connecting
-AGU,Aguascalientes,BJX,Bajio,False,MEX,3.3,117.41148550097965,connecting
+AGU,Aguascalientes,QRO,Queretaro,False,GDL,3.3,252.04703878189696,connecting
+AGU,Aguascalientes,BJX,Bajio,False,GDL,3.3,117.41148550097965,connecting
 AGU,Aguascalientes,CJS,Ciudad Juarez,False,MTY,3.909941275162677,1177.031155531678,connecting
 AGU,Aguascalientes,OAX,Oaxaca,False,MEX,3.3,785.8690445832135,connecting
 AGU,Aguascalientes,VER,Veracruz,False,MEX,3.3,699.2666169148257,connecting
@@ -13614,8 +13614,8 @@ AGU,Aguascalientes,CEN,Ciudad Obregon,False,GDL,3.9828440251466635,988.305052489
 AGU,Aguascalientes,AGU,Aguascalientes,False,,0.0,0.0,same airport
 AGU,Aguascalientes,DGO,Durango,False,GDL,3.3,351.50010042424776,connecting
 AGU,Aguascalientes,TRC,Torreon,False,MTY,3.3666883207911926,443.6935092744767,connecting
-AGU,Aguascalientes,MLM,Morelia,False,MEX,3.3,246.22954826413005,connecting
-AGU,Aguascalientes,ZIH,Ixtapa-Zihuatanejo,False,MEX,3.3,465.0880374051342,connecting
+AGU,Aguascalientes,MLM,Morelia,False,GDL,3.3,246.22954826413005,connecting
+AGU,Aguascalientes,ZIH,Ixtapa-Zihuatanejo,False,GDL,3.3,465.0880374051342,connecting
 AGU,Aguascalientes,PXM,Puerto Escondido,False,MEX,3.3,850.0931182930472,connecting
 AGU,Aguascalientes,VSA,Villahermosa,False,MEX,3.5765827669907977,1075.4685575809758,connecting
 AGU,Aguascalientes,TGZ,Tuxtla Gutierrez,False,MEX,3.621577266334397,1130.8698674472182,connecting
@@ -13774,8 +13774,8 @@ MLM,Morelia,CUN,Cancun,False,MEX,4.316271940603553,1479.5468885506482,connecting
 MLM,Morelia,PVR,Puerto Vallarta,False,GDL,3.3,450.6440479273789,connecting
 MLM,Morelia,SJD,Los Cabos,False,GDL,3.631983608143914,971.3742861478374,connecting
 MLM,Morelia,MID,Merida,False,MEX,3.965141385653821,1190.7053164588222,connecting
-MLM,Morelia,QRO,Queretaro,False,MEX,3.3,122.30422327980104,connecting
-MLM,Morelia,BJX,Bajio,False,MEX,3.3,135.72505480197492,connecting
+MLM,Morelia,QRO,Queretaro,False,GDL,3.3,122.30422327980104,connecting
+MLM,Morelia,BJX,Bajio,False,GDL,3.3,135.72505480197492,connecting
 MLM,Morelia,CJS,Ciudad Juarez,False,MTY,4.105340326594941,1417.2737301884576,connecting
 MLM,Morelia,OAX,Oaxaca,False,MEX,3.3,553.2061825703887,connecting
 MLM,Morelia,VER,Veracruz,False,MEX,3.3,513.1179304522173,connecting
@@ -13785,11 +13785,11 @@ MLM,Morelia,CUL,Culiacan,False,GDL,3.526083482451904,859.2637683309094,connectin
 MLM,Morelia,MZT,Mazatlan,False,GDL,3.3,655.2693677231474,connecting
 MLM,Morelia,LAP,La Paz,False,GDL,3.756979991442842,1070.8540379752865,connecting
 MLM,Morelia,CEN,Ciudad Obregon,False,GDL,3.9828440251466635,1227.397930931713,connecting
-MLM,Morelia,AGU,Aguascalientes,False,MEX,3.3,246.22954826413005,connecting
+MLM,Morelia,AGU,Aguascalientes,False,GDL,3.3,246.22954826413005,connecting
 MLM,Morelia,DGO,Durango,False,GDL,3.3,596.8371976915674,connecting
 MLM,Morelia,TRC,Torreon,False,GDL,3.4344366403536113,681.2433485919992,connecting
 MLM,Morelia,MLM,Morelia,False,,0.0,0.0,same airport
-MLM,Morelia,ZIH,Ixtapa-Zihuatanejo,False,MEX,3.3,254.1615477973653,connecting
+MLM,Morelia,ZIH,Ixtapa-Zihuatanejo,False,GDL,3.3,254.1615477973653,connecting
 MLM,Morelia,PXM,Puerto Escondido,False,MEX,3.3,607.1501233535255,connecting
 MLM,Morelia,VSA,Villahermosa,False,MEX,3.5765827669907977,887.4923294274182,connecting
 MLM,Morelia,TGZ,Tuxtla Gutierrez,False,MEX,3.621577266334397,920.4742496694766,connecting
@@ -13832,8 +13832,8 @@ ZIH,Ixtapa-Zihuatanejo,CUN,Cancun,False,MEX,4.316271940603553,1576.489949035331,
 ZIH,Ixtapa-Zihuatanejo,PVR,Puerto Vallarta,False,GDL,3.3,525.2984022912773,connecting
 ZIH,Ixtapa-Zihuatanejo,SJD,Los Cabos,False,GDL,3.631983608143914,1058.918838031698,connecting
 ZIH,Ixtapa-Zihuatanejo,MID,Merida,False,MEX,3.965141385653821,1292.7537053547849,connecting
-ZIH,Ixtapa-Zihuatanejo,QRO,Queretaro,False,MEX,3.3,361.0833183726683,connecting
-ZIH,Ixtapa-Zihuatanejo,BJX,Bajio,False,MEX,3.3,377.1686071704921,connecting
+ZIH,Ixtapa-Zihuatanejo,QRO,Queretaro,False,GDL,3.3,361.0833183726683,connecting
+ZIH,Ixtapa-Zihuatanejo,BJX,Bajio,False,GDL,3.3,377.1686071704921,connecting
 ZIH,Ixtapa-Zihuatanejo,CJS,Ciudad Juarez,False,MTY,4.41507950755684,1638.7522665637825,connecting
 ZIH,Ixtapa-Zihuatanejo,OAX,Oaxaca,False,MEX,3.3,506.98951004053816,connecting
 ZIH,Ixtapa-Zihuatanejo,VER,Veracruz,False,MEX,3.3,582.3146953721706,connecting
@@ -13843,10 +13843,10 @@ ZIH,Ixtapa-Zihuatanejo,CUL,Culiacan,False,GDL,3.526083482451904,1011.15161007464
 ZIH,Ixtapa-Zihuatanejo,MZT,Mazatlan,False,GDL,3.3,795.4926907636494,connecting
 ZIH,Ixtapa-Zihuatanejo,LAP,La Paz,False,GDL,3.756979991442842,1171.3563378949334,connecting
 ZIH,Ixtapa-Zihuatanejo,CEN,Ciudad Obregon,False,GDL,3.9828440251466635,1386.4387441794172,connecting
-ZIH,Ixtapa-Zihuatanejo,AGU,Aguascalientes,False,MEX,3.3,465.0880374051342,connecting
+ZIH,Ixtapa-Zihuatanejo,AGU,Aguascalientes,False,GDL,3.3,465.0880374051342,connecting
 ZIH,Ixtapa-Zihuatanejo,DGO,Durango,False,GDL,3.3,792.1231153301388,connecting
 ZIH,Ixtapa-Zihuatanejo,TRC,Torreon,False,GDL,3.4344366403536113,908.4624243499651,connecting
-ZIH,Ixtapa-Zihuatanejo,MLM,Morelia,False,MEX,3.3,254.1615477973653,connecting
+ZIH,Ixtapa-Zihuatanejo,MLM,Morelia,False,GDL,3.3,254.1615477973653,connecting
 ZIH,Ixtapa-Zihuatanejo,ZIH,Ixtapa-Zihuatanejo,False,,0.0,0.0,same airport
 ZIH,Ixtapa-Zihuatanejo,PXM,Puerto Escondido,False,MEX,3.3,503.4100925440681,connecting
 ZIH,Ixtapa-Zihuatanejo,VSA,Villahermosa,False,MEX,3.5765827669907977,916.0386048187468,connecting

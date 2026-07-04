@@ -865,7 +865,7 @@ def nearest_airport(lat: float, lon: float, prefer_hub: bool = False) -> tuple[s
     distance = float("inf")
 
     if prefer_hub:
-        for code in DIRECT_SERVICE_HUBS:
+        for code in sorted(DIRECT_SERVICE_HUBS):
             candidate = AIRPORTS[code]
             candidate_distance = haversine_km(lat, lon, candidate["lat"], candidate["lon"])
             if candidate_distance < distance:
@@ -1154,7 +1154,7 @@ def flight_block_hours(distance_km: float) -> float:
 def best_connection_hub(origin_code: str, destination_code: str) -> tuple[str, dict[str, object], float] | None:
     candidates = []
 
-    for hub_code in DIRECT_SERVICE_HUBS:
+    for hub_code in sorted(DIRECT_SERVICE_HUBS):
         if hub_code in {origin_code, destination_code}:
             continue
         if not has_direct_service(origin_code, hub_code):
