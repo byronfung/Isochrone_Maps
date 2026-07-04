@@ -50,6 +50,7 @@ CANADA_BOUNDS = {
     "min_lon": -142.0,
     "max_lon": -52.0,
 }
+CELL_STEP_DEGREES = 0.15
 
 MAINLAND_POLYGON = [
     (-141.0, 69.5),
@@ -477,80 +478,37 @@ def render_sidebar() -> dict[str, object]:
         lat, lon = city_lat, city_lon
         origin_name = location_name
 
-    st.sidebar.header("Chart")
-    resolution = st.sidebar.select_slider(
-        "Resolution",
-        options=["Coarse", "Standard", "Fine"],
-        value="Fine",
-    )
-    step = {"Coarse": 1.25, "Standard": 0.85, "Fine": 0.55}[resolution]
-
     return {
         "origin": Place(name=origin_name, lat=float(lat), lon=float(lon)),
-        "resolution": resolution,
-        "step": step,
+        "step": CELL_STEP_DEGREES,
     }
 
 
-def color_to_css(color: list[int]) -> str:
-    return f"rgba({color[0]}, {color[1]}, {color[2]}, {color[3] / 255:.2f})"
+def color_to_hex(color: list[int]) -> str:
+    return f"#{color[0]:02x}{color[1]:02x}{color[2]:02x}"
 
 
 def render_time_band_legend(cells: pd.DataFrame) -> None:
     band_counts = cells["band"].value_counts().to_dict()
-    swatches = []
+    legend_rows = []
 
     for band in TIME_BANDS:
-        count = band_counts.get(band["label"], 0)
-        opacity = "1" if count else "0.35"
-        swatches.append(
-            f"""
-            <div class="time-band-item" style="opacity: {opacity};">
-                <span class="time-band-swatch" style="background: {color_to_css(band['color'])};"></span>
-                <span class="time-band-label">{band['label']}</span>
-                <span class="time-band-count">{count:,}</span>
-            </div>
-            """
+        mapped_cells = band_counts.get(band["label"], 0)
+        upper_bound = "open" if band["max_hours"] == float("inf") else format_travel_time(band["max_hours"])
+        legend_rows.append(
+            {
+                "band": band["label"],
+                "upper_bound": upper_bound,
+                "mapped_cells": mapped_cells,
+                "active": "yes" if mapped_cells else "no",
+                "map_color": color_to_hex(band["color"]),
+            }
         )
 
-    st.markdown(
-        f"""
-        <style>
-            .time-band-grid {{
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 7px 12px;
-                margin: 0.35rem 0 1rem;
-            }}
-            .time-band-item {{
-                display: grid;
-                grid-template-columns: 18px minmax(0, 1fr) auto;
-                align-items: center;
-                gap: 7px;
-                min-width: 0;
-                color: #2f2b24;
-                font-size: 0.86rem;
-                line-height: 1.15;
-            }}
-            .time-band-swatch {{
-                display: inline-block;
-                width: 18px;
-                height: 18px;
-                border: 1px solid rgba(47, 43, 36, 0.35);
-            }}
-            .time-band-label {{
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }}
-            .time-band-count {{
-                color: #6b6256;
-                font-variant-numeric: tabular-nums;
-            }}
-        </style>
-        <div class="time-band-grid">{''.join(swatches)}</div>
-        """,
-        unsafe_allow_html=True,
+    st.dataframe(
+        pd.DataFrame(legend_rows),
+        hide_index=True,
+        use_container_width=True,
     )
 
 
@@ -579,19 +537,6 @@ def render_context(cells: pd.DataFrame, city_estimates: pd.DataFrame) -> None:
     with left:
         st.subheader("Time Band Legend")
         render_time_band_legend(cells)
-        st.dataframe(
-            pd.DataFrame(
-                [
-                    {
-                        "band": band["label"],
-                        "upper_bound": "open" if band["max_hours"] == float("inf") else format_travel_time(band["max_hours"]),
-                    }
-                    for band in TIME_BANDS
-                ]
-            ),
-            hide_index=True,
-            use_container_width=True,
-        )
     with right:
         st.subheader("Optimal Modes")
         st.dataframe(
@@ -622,7 +567,7 @@ def main() -> None:
     top_row[0].metric("Origin", origin.name)
     top_row[1].metric("Latitude", f"{origin.lat:.4f}")
     top_row[2].metric("Longitude", f"{origin.lon:.4f}")
-    top_row[3].metric("Resolution", controls["resolution"])
+    top_row[3].metric("Cell size", f"{controls['step']:.2f} deg")
 
     st.pydeck_chart(make_map(origin, cells), use_container_width=True)
     render_context(cells, city_estimates)
