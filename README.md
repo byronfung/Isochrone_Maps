@@ -11,4 +11,16 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+Run the North America version with:
+
+```bash
+streamlit run northamerica.py
+```
+
+Static cache CSVs for the North America app live in `cache/`. Rebuild them after airport or route-model edits with:
+
+```bash
+python build_cache_tables.py
+```
+
 The app uses a lightweight multimodal travel-time model to color Canada into passage-time bands from the selected origin. It does not require an API key.

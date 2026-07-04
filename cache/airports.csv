@@ -1,0 +1,173 @@
+code,name,lat,lon,remote,direct_airport,direct_service_hub
+ABQ,Albuquerque,35.0494,-106.6172,False,True,False
+AGU,Aguascalientes,21.7056,-102.3179,False,True,False
+ALB,Albany,42.7483,-73.8017,False,True,False
+ANC,Anchorage,61.1744,-149.9964,True,True,True
+ATL,Atlanta Hartsfield-Jackson,33.6407,-84.4277,False,True,True
+AUS,Austin-Bergstrom,30.1975,-97.6664,False,True,False
+BDL,Hartford Bradley,41.9389,-72.6832,False,True,False
+BHM,Birmingham,33.5629,-86.7535,False,True,False
+BIS,Bismarck,46.7727,-100.746,False,True,False
+BJX,Bajio,20.9935,-101.4808,False,True,False
+BNA,Nashville,36.1263,-86.6774,False,True,False
+BOI,Boise,43.5644,-116.2228,False,True,False
+BOS,Boston Logan,42.3656,-71.0096,False,True,True
+BUF,Buffalo Niagara,42.9405,-78.7322,False,True,False
+BUR,Burbank,34.2007,-118.3587,False,True,False
+BWI,Baltimore-Washington,39.1774,-76.6684,False,True,False
+CEN,Ciudad Obregon,27.3926,-109.8331,False,True,False
+CHS,Charleston,32.8986,-80.0405,False,True,False
+CJS,Ciudad Juarez,31.6361,-106.4287,False,True,False
+CLE,Cleveland Hopkins,41.4117,-81.8498,False,True,False
+CLT,Charlotte Douglas,35.2144,-80.9473,False,True,True
+CMH,Columbus,39.9999,-82.8872,False,True,False
+COS,Colorado Springs,38.8058,-104.7008,False,True,False
+CUL,Culiacan,24.7645,-107.4747,False,True,False
+CUN,Cancun,21.0365,-86.8771,False,True,True
+CUU,Chihuahua,28.7029,-105.9646,False,True,False
+CVG,Cincinnati-Northern Kentucky,39.0488,-84.6678,False,True,False
+DAL,Dallas Love Field,32.8471,-96.8518,False,True,False
+DCA,Washington National,38.8512,-77.0402,False,True,False
+DEN,Denver,39.8561,-104.6737,False,True,True
+DFW,Dallas-Fort Worth,32.8998,-97.0403,False,True,True
+DGO,Durango,24.1242,-104.528,False,True,False
+DSM,Des Moines,41.534,-93.6631,False,True,False
+DTW,Detroit Metro,42.2162,-83.3554,False,True,True
+ELP,El Paso,31.8072,-106.3776,False,True,False
+EWR,Newark Liberty,40.6895,-74.1745,False,True,True
+FAI,Fairbanks,64.8151,-147.8564,True,True,False
+FAR,Fargo,46.9207,-96.8158,False,True,False
+FAT,Fresno,36.7762,-119.7181,False,True,False
+FLL,Fort Lauderdale,26.0742,-80.1506,False,True,False
+FSD,Sioux Falls,43.582,-96.7419,False,True,False
+GDL,Guadalajara,20.5218,-103.3112,False,True,True
+GEG,Spokane,47.6199,-117.5338,False,True,False
+GRR,Grand Rapids,42.8808,-85.5228,False,True,False
+GSP,Greenville-Spartanburg,34.8957,-82.2189,False,True,False
+HMO,Hermosillo,29.0959,-111.0479,False,True,False
+HOU,Houston Hobby,29.6454,-95.2789,False,True,False
+IAD,Washington Dulles,38.9531,-77.4565,False,True,False
+IAH,Houston Intercontinental,29.9902,-95.3368,False,True,True
+IND,Indianapolis,39.7173,-86.2944,False,True,False
+JAX,Jacksonville,30.4941,-81.6879,False,True,False
+JFK,New York JFK,40.6413,-73.7781,False,True,True
+JNU,Juneau,58.355,-134.5763,True,True,False
+LAP,La Paz,24.0727,-110.3625,False,True,False
+LAS,Las Vegas,36.084,-115.1537,False,True,True
+LAX,Los Angeles,33.9416,-118.4085,False,True,True
+LGA,New York LaGuardia,40.7769,-73.874,False,True,False
+LGB,Long Beach,33.8177,-118.1516,False,True,False
+MCI,Kansas City,39.2976,-94.7139,False,True,False
+MCO,Orlando,28.4312,-81.3081,False,True,False
+MDW,Chicago Midway,41.7868,-87.7522,False,True,False
+MEM,Memphis,35.0424,-89.9767,False,True,False
+MEX,Mexico City,19.4361,-99.0719,False,True,True
+MIA,Miami,25.7959,-80.287,False,True,True
+MID,Merida,20.937,-89.6577,False,True,False
+MKE,Milwaukee,42.9472,-87.8966,False,True,False
+MLM,Morelia,19.8499,-101.0255,False,True,False
+MSP,Minneapolis-Saint Paul,44.8848,-93.2223,False,True,True
+MSY,New Orleans,29.9934,-90.258,False,True,False
+MTY,Monterrey,25.7785,-100.1069,False,True,True
+MZT,Mazatlan,23.1614,-106.2661,False,True,False
+NLU,Felipe Angeles,19.742,-99.014,False,True,False
+OAK,Oakland,37.7126,-122.2197,False,True,False
+OAX,Oaxaca,16.9999,-96.7266,False,True,False
+OKC,Oklahoma City,35.3931,-97.6007,False,True,False
+OMA,Omaha,41.3032,-95.8941,False,True,False
+ONT,Ontario California,34.056,-117.6012,False,True,False
+ORD,Chicago O'Hare,41.9742,-87.9073,False,True,True
+ORF,Norfolk,36.8946,-76.2012,False,True,False
+PBC,Puebla,19.1581,-98.3714,False,True,False
+PBI,Palm Beach,26.6832,-80.0956,False,True,False
+PDX,Portland,45.5898,-122.5951,False,True,False
+PHL,Philadelphia,39.8744,-75.2424,False,True,False
+PHX,Phoenix Sky Harbor,33.4342,-112.0116,False,True,True
+PIT,Pittsburgh,40.4915,-80.2329,False,True,False
+PSP,Palm Springs,33.8297,-116.5067,False,True,False
+PVD,Providence,41.724,-71.4282,False,True,False
+PVR,Puerto Vallarta,20.6801,-105.2542,False,True,False
+PWM,Portland Maine,43.6462,-70.3093,False,True,False
+PXM,Puerto Escondido,15.8769,-97.0891,False,True,False
+QRO,Queretaro,20.6173,-100.1857,False,True,False
+RAP,Rapid City,44.0453,-103.0574,False,True,False
+RDU,Raleigh-Durham,35.8801,-78.788,False,True,False
+RIC,Richmond,37.5052,-77.3197,False,True,False
+RNO,Reno-Tahoe,39.4991,-119.7681,False,True,False
+ROC,Rochester,43.1189,-77.6724,False,True,False
+RSW,Fort Myers,26.5362,-81.7552,False,True,False
+SAN,San Diego,32.7338,-117.1933,False,True,False
+SAT,San Antonio,29.5337,-98.4698,False,True,False
+SAV,Savannah,32.1276,-81.2021,False,True,False
+SDF,Louisville,38.1744,-85.736,False,True,False
+SEA,Seattle-Tacoma,47.4502,-122.3088,False,True,True
+SFO,San Francisco,37.6213,-122.379,False,True,True
+SJC,San Jose,37.3639,-121.9289,False,True,False
+SJD,Los Cabos,23.1518,-109.721,False,True,False
+SLC,Salt Lake City,40.7899,-111.9791,False,True,False
+SMF,Sacramento,38.6954,-121.5908,False,True,False
+SNA,Orange County,33.6757,-117.8682,False,True,False
+STL,St. Louis,38.7499,-90.3748,False,True,False
+SYR,Syracuse,43.1112,-76.1063,False,True,False
+TGZ,Tuxtla Gutierrez,16.5618,-93.0261,False,True,False
+TIJ,Tijuana,32.5411,-116.9702,False,True,False
+TPA,Tampa,27.9755,-82.5332,False,True,False
+TRC,Torreon,25.5683,-103.4106,False,True,False
+TUL,Tulsa,36.1984,-95.8881,False,True,False
+TUS,Tucson,32.1161,-110.941,False,True,False
+VER,Veracruz,19.1459,-96.1873,False,True,False
+VSA,Villahermosa,17.9969,-92.8174,False,True,False
+XNA,Northwest Arkansas,36.2819,-94.3068,False,True,False
+YAM,Sault Ste. Marie,46.485,-84.5094,False,True,False
+YBG,Saguenay-Bagotville,48.3306,-70.9964,False,True,False
+YBR,Brandon,49.91,-99.9519,False,True,False
+YCB,Cambridge Bay,69.1081,-105.1383,True,True,False
+YCD,Nanaimo,49.0523,-123.8702,False,True,False
+YDF,Deer Lake,49.2108,-57.3914,False,True,False
+YEG,Edmonton,53.3097,-113.5797,False,True,True
+YEV,Inuvik,68.3042,-133.4828,True,True,False
+YFB,Iqaluit,63.7564,-68.5558,True,True,False
+YFC,Fredericton,45.8689,-66.5372,False,True,False
+YHM,Hamilton,43.1736,-79.935,False,True,False
+YHU,Montreal Saint-Hubert,45.5175,-73.4169,False,True,False
+YHZ,Halifax,44.8808,-63.5086,False,True,True
+YKA,Kamloops,50.7022,-120.4444,False,True,False
+YKF,Kitchener-Waterloo,43.4608,-80.3786,False,True,False
+YLW,Kelowna,49.9561,-119.3778,False,True,False
+YMM,Fort McMurray,56.6533,-111.2219,False,True,False
+YOW,Ottawa,45.3225,-75.6692,False,True,True
+YQB,Quebec City,46.7911,-71.3933,False,True,False
+YQG,Windsor,42.2756,-82.9556,False,True,False
+YQL,Lethbridge,49.6303,-112.7997,False,True,False
+YQM,Moncton,46.1122,-64.6786,False,True,False
+YQQ,Comox,49.7108,-124.8867,False,True,False
+YQR,Regina,50.4319,-104.6658,False,True,False
+YQT,Thunder Bay,48.3719,-89.3239,False,True,False
+YQU,Grande Prairie,55.1797,-118.885,False,True,False
+YQX,Gander,48.9369,-54.5681,False,True,False
+YRT,Rankin Inlet,62.8114,-92.1158,True,True,False
+YSB,Sudbury,46.625,-80.7989,False,True,False
+YSJ,Saint John,45.3161,-65.8903,False,True,False
+YTS,Timmins,48.5697,-81.3767,False,True,False
+YTZ,Toronto Billy Bishop,43.6285,-79.3962,False,True,False
+YUL,Montreal Trudeau,45.4706,-73.7408,False,True,True
+YUY,Rouyn-Noranda,48.2061,-78.8356,False,True,False
+YVO,Val-d'Or,48.0533,-77.7828,False,True,False
+YVR,Vancouver,49.1967,-123.1815,False,True,True
+YWG,Winnipeg,49.9099,-97.2399,False,True,True
+YXE,Saskatoon,52.1708,-106.6997,False,True,False
+YXS,Prince George,53.8894,-122.6789,False,True,False
+YXU,London,43.0356,-81.1539,False,True,False
+YXX,Abbotsford,49.0253,-122.3606,False,True,False
+YXY,Whitehorse,60.7096,-135.0673,True,True,False
+YYB,North Bay,46.3636,-79.4228,False,True,False
+YYC,Calgary,51.1215,-114.0076,False,True,True
+YYG,Charlottetown,46.29,-63.1211,False,True,False
+YYJ,Victoria,48.6469,-123.4258,False,True,False
+YYQ,Churchill,58.7392,-94.065,True,True,False
+YYR,Goose Bay,53.3192,-60.4258,True,True,False
+YYT,St. John's,47.6186,-52.7519,False,True,False
+YYZ,Toronto Pearson,43.6777,-79.6248,False,True,True
+YZF,Yellowknife,62.4628,-114.4403,True,True,False
+YZV,Sept-Iles,50.2233,-66.2656,False,True,False
+ZIH,Ixtapa-Zihuatanejo,17.6016,-101.4605,False,True,False

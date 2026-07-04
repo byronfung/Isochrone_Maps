@@ -5,6 +5,7 @@ import math
 import os
 from dataclasses import dataclass
 from functools import lru_cache
+from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -12,6 +13,11 @@ import pandas as pd
 import pydeck as pdk
 import streamlit as st
 
+
+BASE_DIR = Path(__file__).resolve().parent
+CACHE_DIR = BASE_DIR / "cache"
+AIRPORT_CACHE_CSV = CACHE_DIR / "airports.csv"
+FLIGHT_ROUTE_CACHE_CSV = CACHE_DIR / "flight_routes.csv"
 
 TORONTO = {"name": "Toronto, ON", "lat": 43.6532, "lon": -79.3832}
 
@@ -220,6 +226,57 @@ AIRPORTS.update(
         "OAX": {"name": "Oaxaca", "lat": 16.9999, "lon": -96.7266, "remote": False},
         "VER": {"name": "Veracruz", "lat": 19.1459, "lon": -96.1873, "remote": False},
         "PBC": {"name": "Puebla", "lat": 19.1581, "lon": -98.3714, "remote": False},
+        "CLE": {"name": "Cleveland Hopkins", "lat": 41.4117, "lon": -81.8498, "remote": False},
+        "PIT": {"name": "Pittsburgh", "lat": 40.4915, "lon": -80.2329, "remote": False},
+        "CVG": {"name": "Cincinnati-Northern Kentucky", "lat": 39.0488, "lon": -84.6678, "remote": False},
+        "BUF": {"name": "Buffalo Niagara", "lat": 42.9405, "lon": -78.7322, "remote": False},
+        "ROC": {"name": "Rochester", "lat": 43.1189, "lon": -77.6724, "remote": False},
+        "SYR": {"name": "Syracuse", "lat": 43.1112, "lon": -76.1063, "remote": False},
+        "ALB": {"name": "Albany", "lat": 42.7483, "lon": -73.8017, "remote": False},
+        "BDL": {"name": "Hartford Bradley", "lat": 41.9389, "lon": -72.6832, "remote": False},
+        "PVD": {"name": "Providence", "lat": 41.7240, "lon": -71.4282, "remote": False},
+        "PWM": {"name": "Portland Maine", "lat": 43.6462, "lon": -70.3093, "remote": False},
+        "RIC": {"name": "Richmond", "lat": 37.5052, "lon": -77.3197, "remote": False},
+        "ORF": {"name": "Norfolk", "lat": 36.8946, "lon": -76.2012, "remote": False},
+        "CHS": {"name": "Charleston", "lat": 32.8986, "lon": -80.0405, "remote": False},
+        "SAV": {"name": "Savannah", "lat": 32.1276, "lon": -81.2021, "remote": False},
+        "JAX": {"name": "Jacksonville", "lat": 30.4941, "lon": -81.6879, "remote": False},
+        "PBI": {"name": "Palm Beach", "lat": 26.6832, "lon": -80.0956, "remote": False},
+        "RSW": {"name": "Fort Myers", "lat": 26.5362, "lon": -81.7552, "remote": False},
+        "BHM": {"name": "Birmingham", "lat": 33.5629, "lon": -86.7535, "remote": False},
+        "GSP": {"name": "Greenville-Spartanburg", "lat": 34.8957, "lon": -82.2189, "remote": False},
+        "OKC": {"name": "Oklahoma City", "lat": 35.3931, "lon": -97.6007, "remote": False},
+        "TUL": {"name": "Tulsa", "lat": 36.1984, "lon": -95.8881, "remote": False},
+        "OMA": {"name": "Omaha", "lat": 41.3032, "lon": -95.8941, "remote": False},
+        "DSM": {"name": "Des Moines", "lat": 41.5340, "lon": -93.6631, "remote": False},
+        "GRR": {"name": "Grand Rapids", "lat": 42.8808, "lon": -85.5228, "remote": False},
+        "FAR": {"name": "Fargo", "lat": 46.9207, "lon": -96.8158, "remote": False},
+        "BIS": {"name": "Bismarck", "lat": 46.7727, "lon": -100.7460, "remote": False},
+        "RAP": {"name": "Rapid City", "lat": 44.0453, "lon": -103.0574, "remote": False},
+        "BOI": {"name": "Boise", "lat": 43.5644, "lon": -116.2228, "remote": False},
+        "GEG": {"name": "Spokane", "lat": 47.6199, "lon": -117.5338, "remote": False},
+        "RNO": {"name": "Reno-Tahoe", "lat": 39.4991, "lon": -119.7681, "remote": False},
+        "BUR": {"name": "Burbank", "lat": 34.2007, "lon": -118.3587, "remote": False},
+        "LGB": {"name": "Long Beach", "lat": 33.8177, "lon": -118.1516, "remote": False},
+        "ONT": {"name": "Ontario California", "lat": 34.0560, "lon": -117.6012, "remote": False},
+        "SNA": {"name": "Orange County", "lat": 33.6757, "lon": -117.8682, "remote": False},
+        "PSP": {"name": "Palm Springs", "lat": 33.8297, "lon": -116.5067, "remote": False},
+        "COS": {"name": "Colorado Springs", "lat": 38.8058, "lon": -104.7008, "remote": False},
+        "FSD": {"name": "Sioux Falls", "lat": 43.5820, "lon": -96.7419, "remote": False},
+        "XNA": {"name": "Northwest Arkansas", "lat": 36.2819, "lon": -94.3068, "remote": False},
+        "CUU": {"name": "Chihuahua", "lat": 28.7029, "lon": -105.9646, "remote": False},
+        "CUL": {"name": "Culiacan", "lat": 24.7645, "lon": -107.4747, "remote": False},
+        "MZT": {"name": "Mazatlan", "lat": 23.1614, "lon": -106.2661, "remote": False},
+        "LAP": {"name": "La Paz", "lat": 24.0727, "lon": -110.3625, "remote": False},
+        "CEN": {"name": "Ciudad Obregon", "lat": 27.3926, "lon": -109.8331, "remote": False},
+        "AGU": {"name": "Aguascalientes", "lat": 21.7056, "lon": -102.3179, "remote": False},
+        "DGO": {"name": "Durango", "lat": 24.1242, "lon": -104.5280, "remote": False},
+        "TRC": {"name": "Torreon", "lat": 25.5683, "lon": -103.4106, "remote": False},
+        "MLM": {"name": "Morelia", "lat": 19.8499, "lon": -101.0255, "remote": False},
+        "ZIH": {"name": "Ixtapa-Zihuatanejo", "lat": 17.6016, "lon": -101.4605, "remote": False},
+        "PXM": {"name": "Puerto Escondido", "lat": 15.8769, "lon": -97.0891, "remote": False},
+        "VSA": {"name": "Villahermosa", "lat": 17.9969, "lon": -92.8174, "remote": False},
+        "TGZ": {"name": "Tuxtla Gutierrez", "lat": 16.5618, "lon": -93.0261, "remote": False},
     }
 )
 
@@ -871,6 +928,21 @@ def airport_city_name(airport: dict[str, object]) -> str:
         "Felipe Angeles": "Mexico City",
         "Bajio": "Leon",
         "Ciudad Juarez": "Juarez",
+        "Cleveland Hopkins": "Cleveland",
+        "Cincinnati-Northern Kentucky": "Cincinnati",
+        "Buffalo Niagara": "Buffalo",
+        "Hartford Bradley": "Hartford",
+        "Portland Maine": "Portland",
+        "Greenville-Spartanburg": "Greenville-Spartanburg",
+        "Reno-Tahoe": "Reno",
+        "Burbank": "Los Angeles",
+        "Long Beach": "Los Angeles",
+        "Ontario California": "Ontario",
+        "Orange County": "Orange County",
+        "Northwest Arkansas": "Northwest Arkansas",
+        "Ixtapa-Zihuatanejo": "Ixtapa-Zihuatanejo",
+        "Puerto Escondido": "Puerto Escondido",
+        "Tuxtla Gutierrez": "Tuxtla Gutierrez",
     }
     name = str(airport["name"])
     return replacements.get(name, name)
@@ -888,7 +960,12 @@ def origin_location_options() -> dict[str, tuple[float, float]]:
 
 
 def nearby_airport_label(lat: float, lon: float, threshold_km: float = 20) -> str | None:
-    code, airport, distance_km = nearest_airport(lat, lon)
+    candidates = sorted_airport_access_candidates(round(lat, 4), round(lon, 4))
+    if not candidates:
+        return None
+
+    code, distance_km = candidates[0]
+    airport = AIRPORTS[code]
     if distance_km <= threshold_km:
         return airport_display_name(code, airport)
     return None
@@ -1097,7 +1174,7 @@ def best_connection_hub(origin_code: str, destination_code: str) -> tuple[str, d
 
 
 @lru_cache(maxsize=None)
-def flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[bool, str | None, float]:
+def _compute_flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[bool, str | None, float]:
     terminal_hours = 1.0
     connection_hours = 1.2
 
@@ -1118,22 +1195,133 @@ def flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[boo
     return False, hub_code, total_hours
 
 
+def compute_airport_table() -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "code": code,
+            "name": airport["name"],
+            "lat": airport["lat"],
+            "lon": airport["lon"],
+            "remote": airport["remote"],
+            "direct_airport": code in DIRECT_AIRPORTS,
+            "direct_service_hub": code in DIRECT_SERVICE_HUBS,
+        }
+        for code, airport in sorted(AIRPORTS.items())
+    )
+
+
+def compute_flight_route_table() -> pd.DataFrame:
+    rows = []
+
+    for origin_code, origin_airport in AIRPORTS.items():
+        for destination_code, destination_airport in AIRPORTS.items():
+            direct_service, hub_code, flight_hours = _compute_flight_itinerary_hours(origin_code, destination_code)
+            if not math.isfinite(flight_hours):
+                continue
+
+            rows.append(
+                {
+                    "origin_code": origin_code,
+                    "origin_name": origin_airport["name"],
+                    "destination_code": destination_code,
+                    "destination_name": destination_airport["name"],
+                    "direct_service": direct_service,
+                    "hub_code": hub_code or "",
+                    "flight_hours": flight_hours,
+                    "airport_distance_km": 0
+                    if origin_code == destination_code
+                    else airport_distance_km(origin_code, destination_code),
+                    "itinerary_type": "same airport"
+                    if origin_code == destination_code
+                    else "direct"
+                    if direct_service
+                    else "connecting",
+                }
+            )
+
+    return pd.DataFrame(rows)
+
+
+@st.cache_data(show_spinner=False)
+def load_cached_flight_route_table(csv_path: str, routing_model_version: str) -> pd.DataFrame:
+    _ = routing_model_version
+    route_table = pd.read_csv(csv_path, keep_default_na=False)
+    if route_table["direct_service"].dtype != bool:
+        route_table["direct_service"] = route_table["direct_service"].map(
+            lambda value: str(value).strip().casefold() == "true"
+        )
+    route_table["flight_hours"] = route_table["flight_hours"].astype(float)
+    route_table["airport_distance_km"] = route_table["airport_distance_km"].astype(float)
+    return route_table
+
+
+@st.cache_data(show_spinner=False)
+def build_flight_route_table(routing_model_version: str) -> pd.DataFrame:
+    if FLIGHT_ROUTE_CACHE_CSV.exists():
+        return load_cached_flight_route_table(str(FLIGHT_ROUTE_CACHE_CSV), routing_model_version)
+
+    _ = routing_model_version
+    return compute_flight_route_table()
+
+
+@lru_cache(maxsize=8)
+def flight_route_index(routing_model_version: str) -> dict[tuple[str, str], tuple[bool, str | None, float]]:
+    route_table = build_flight_route_table(routing_model_version)
+    return {
+        (row.origin_code, row.destination_code): (
+            bool(row.direct_service),
+            str(row.hub_code) or None,
+            float(row.flight_hours),
+        )
+        for row in route_table.itertuples(index=False)
+    }
+
+
+@lru_cache(maxsize=None)
+def origin_airport_route_options(origin_code: str, routing_model_version: str) -> dict[str, tuple[bool, str | None, float]]:
+    return {
+        destination_code: route
+        for (cached_origin_code, destination_code), route in flight_route_index(routing_model_version).items()
+        if cached_origin_code == origin_code
+    }
+
+
+def flight_itinerary_hours(origin_code: str, destination_code: str) -> tuple[bool, str | None, float]:
+    return flight_route_index(ROUTING_MODEL_VERSION).get(
+        (origin_code, destination_code),
+        (False, None, float("inf")),
+    )
+
+
+@lru_cache(maxsize=250000)
+def sorted_airport_access_candidates(lat: float, lon: float) -> tuple[tuple[str, float], ...]:
+    return tuple(
+        sorted(
+            (
+                (
+                    destination_code,
+                    haversine_km(lat, lon, destination_airport["lat"], destination_airport["lon"]),
+                )
+                for destination_code, destination_airport in AIRPORTS.items()
+            ),
+            key=lambda item: item[1],
+        )
+    )
+
+
 def destination_airport_candidates(
     lat: float,
     lon: float,
     direct_distance_km: float,
 ) -> list[tuple[str, dict[str, object], float]]:
-    candidates = sorted(
+    candidates = [
         (
-            (
-                destination_code,
-                destination_airport,
-                haversine_km(lat, lon, destination_airport["lat"], destination_airport["lon"]),
-            )
-            for destination_code, destination_airport in AIRPORTS.items()
-        ),
-        key=lambda item: item[2],
-    )
+            destination_code,
+            AIRPORTS[destination_code],
+            destination_access_km,
+        )
+        for destination_code, destination_access_km in sorted_airport_access_candidates(round(lat, 4), round(lon, 4))
+    ]
     if direct_distance_km < 420:
         return [candidate for candidate in candidates if candidate[2] <= 140][:10]
     return candidates[:16 if lat >= 58 else 12]
@@ -1142,6 +1330,7 @@ def destination_airport_candidates(
 def best_air_route(origin: Place, lat: float, lon: float, direct_distance_km: float) -> AirRouteCandidate | None:
     origin_code, origin_airport, origin_access_km = nearest_airport(origin.lat, origin.lon, prefer_hub=True)
     origin_access_hours = airport_access_hours(origin_access_km, origin.lat)
+    origin_routes = origin_airport_route_options(origin_code, ROUTING_MODEL_VERSION)
     candidates: list[AirRouteCandidate] = []
 
     for destination_code, destination_airport, destination_access_km in destination_airport_candidates(
@@ -1153,7 +1342,7 @@ def best_air_route(origin: Place, lat: float, lon: float, direct_distance_km: fl
             continue
 
         destination_access_hours = destination_ground_hours(destination_access_km, lat)
-        direct_service, hub_code, flight_hours = flight_itinerary_hours(origin_code, destination_code)
+        direct_service, hub_code, flight_hours = origin_routes.get(destination_code, (False, None, float("inf")))
         if not math.isfinite(flight_hours):
             continue
 
