@@ -26,6 +26,24 @@ CANADIAN_LOCATIONS = {
     "Iqaluit, NU": (63.7467, -68.5170),
 }
 
+AIRPORTS = {
+    "YYZ": {"name": "Toronto Pearson", "lat": 43.6777, "lon": -79.6248, "remote": False},
+    "YUL": {"name": "Montreal Trudeau", "lat": 45.4706, "lon": -73.7408, "remote": False},
+    "YVR": {"name": "Vancouver", "lat": 49.1967, "lon": -123.1815, "remote": False},
+    "YYC": {"name": "Calgary", "lat": 51.1215, "lon": -114.0076, "remote": False},
+    "YEG": {"name": "Edmonton", "lat": 53.3097, "lon": -113.5797, "remote": False},
+    "YOW": {"name": "Ottawa", "lat": 45.3225, "lon": -75.6692, "remote": False},
+    "YWG": {"name": "Winnipeg", "lat": 49.9099, "lon": -97.2399, "remote": False},
+    "YQB": {"name": "Quebec City", "lat": 46.7911, "lon": -71.3933, "remote": False},
+    "YHZ": {"name": "Halifax", "lat": 44.8808, "lon": -63.5086, "remote": False},
+    "YYT": {"name": "St. John's", "lat": 47.6186, "lon": -52.7519, "remote": False},
+    "YZF": {"name": "Yellowknife", "lat": 62.4628, "lon": -114.4403, "remote": True},
+    "YXY": {"name": "Whitehorse", "lat": 60.7096, "lon": -135.0673, "remote": True},
+    "YFB": {"name": "Iqaluit", "lat": 63.7564, "lon": -68.5558, "remote": True},
+}
+
+DIRECT_AIRPORTS = {"YYZ", "YUL", "YVR", "YYC", "YEG", "YOW", "YWG", "YQB", "YHZ", "YYT"}
+
 CANADA_BOUNDS = {
     "min_lat": 41.0,
     "max_lat": 84.0,
@@ -76,21 +94,34 @@ EXCLUDED_WATER_POLYGONS = [
 ]
 
 TIME_BANDS = [
-    {"label": "Under 2 hr", "max_hours": 2, "color": [248, 232, 137, 190]},
-    {"label": "2-4 hr", "max_hours": 4, "color": [178, 210, 110, 190]},
-    {"label": "4-8 hr", "max_hours": 8, "color": [84, 177, 132, 190]},
-    {"label": "8-12 hr", "max_hours": 12, "color": [58, 145, 180, 190]},
-    {"label": "12-24 hr", "max_hours": 24, "color": [69, 102, 170, 190]},
-    {"label": "1-2 days", "max_hours": 48, "color": [124, 92, 157, 190]},
-    {"label": "2-3 days", "max_hours": 72, "color": [177, 89, 126, 190]},
-    {"label": "3-5 days", "max_hours": 120, "color": [183, 123, 74, 190]},
-    {"label": "Over 5 days", "max_hours": float("inf"), "color": [115, 86, 72, 190]},
+    {"label": "Under 30 min", "max_hours": 0.5, "color": [255, 247, 188, 190]},
+    {"label": "30-60 min", "max_hours": 1, "color": [254, 227, 145, 190]},
+    {"label": "1-1.5 hr", "max_hours": 1.5, "color": [254, 196, 79, 190]},
+    {"label": "1.5-2 hr", "max_hours": 2, "color": [251, 154, 41, 190]},
+    {"label": "2-3 hr", "max_hours": 3, "color": [236, 112, 20, 190]},
+    {"label": "3-4 hr", "max_hours": 4, "color": [204, 76, 2, 190]},
+    {"label": "4-5 hr", "max_hours": 5, "color": [166, 120, 42, 190]},
+    {"label": "5-6 hr", "max_hours": 6, "color": [128, 155, 61, 190]},
+    {"label": "6-8 hr", "max_hours": 8, "color": [83, 176, 86, 190]},
+    {"label": "8-10 hr", "max_hours": 10, "color": [49, 163, 111, 190]},
+    {"label": "10-12 hr", "max_hours": 12, "color": [26, 143, 141, 190]},
+    {"label": "12-16 hr", "max_hours": 16, "color": [34, 123, 169, 190]},
+    {"label": "16-20 hr", "max_hours": 20, "color": [55, 102, 175, 190]},
+    {"label": "20-24 hr", "max_hours": 24, "color": [78, 80, 170, 190]},
+    {"label": "1-1.5 days", "max_hours": 36, "color": [111, 75, 159, 190]},
+    {"label": "1.5-2 days", "max_hours": 48, "color": [143, 71, 146, 190]},
+    {"label": "2-3 days", "max_hours": 72, "color": [174, 69, 126, 190]},
+    {"label": "3-4 days", "max_hours": 96, "color": [190, 91, 94, 190]},
+    {"label": "4-5 days", "max_hours": 120, "color": [178, 117, 72, 190]},
+    {"label": "Over 5 days", "max_hours": float("inf"), "color": [111, 78, 65, 190]},
 ]
+TIME_BAND_VERSION = "|".join(f"{band['label']}:{band['max_hours']}:{band['color']}" for band in TIME_BANDS)
 
 MODE_CONTEXT = {
     "Rail + road": "Quebec-Windsor corridor and nearby southern routes",
     "Road": "regional overland travel",
-    "Air + ground": "long-distance intercity travel",
+    "Direct flight + ground": "major airport-to-airport service",
+    "Connecting flight + ground": "air travel through a hub",
     "Air + remote access": "northern and low-access areas",
 }
 
@@ -111,7 +142,6 @@ class TravelEstimate:
 
 def point_in_polygon(lon: float, lat: float, polygon: list[tuple[float, float]]) -> bool:
     inside = False
-    point_count = len(polygon)
     previous_lon, previous_lat = polygon[-1]
 
     for current_lon, current_lat in polygon:
@@ -168,21 +198,6 @@ def time_band(hours: float) -> dict[str, object]:
     return TIME_BANDS[-1]
 
 
-def region_access_penalty(lat: float, lon: float) -> float:
-    penalty = 0.8
-    if lat >= 55:
-        penalty += 1.8
-    if lat >= 60:
-        penalty += 4.0
-    if lat >= 66:
-        penalty += 10.0
-    if lon <= -125 or lon >= -58:
-        penalty += 1.3
-    if lat >= 72:
-        penalty += 18.0
-    return penalty
-
-
 def road_multiplier(lat: float, lon: float) -> float:
     multiplier = 1.22
     if lat >= 52:
@@ -198,9 +213,65 @@ def road_multiplier(lat: float, lon: float) -> float:
     return multiplier
 
 
+def nearest_airport(lat: float, lon: float) -> tuple[str, dict[str, object], float]:
+    airport_code = ""
+    airport = {}
+    distance = float("inf")
+
+    for code, candidate in AIRPORTS.items():
+        candidate_distance = haversine_km(lat, lon, candidate["lat"], candidate["lon"])
+        if candidate_distance < distance:
+            airport_code = code
+            airport = candidate
+            distance = candidate_distance
+
+    return airport_code, airport, distance
+
+
+def airport_access_hours(distance_km: float, lat: float) -> float:
+    if distance_km <= 35:
+        return 0.45 + distance_km / 75
+    if lat >= 58:
+        return 0.8 + distance_km / 45
+    return 0.65 + distance_km / 65
+
+
+def air_travel_candidate(origin: Place, lat: float, lon: float, direct_distance_km: float) -> tuple[str, float] | None:
+    origin_code, origin_airport, origin_access_km = nearest_airport(origin.lat, origin.lon)
+    destination_code, destination_airport, destination_access_km = nearest_airport(lat, lon)
+    destination_is_airport_reachable = destination_access_km <= 260 or lat >= 58
+
+    if direct_distance_km < 420 and destination_access_km > 70:
+        return None
+    if not destination_is_airport_reachable:
+        return None
+
+    airport_distance_km = haversine_km(
+        origin_airport["lat"],
+        origin_airport["lon"],
+        destination_airport["lat"],
+        destination_airport["lon"],
+    )
+    origin_access_hours = airport_access_hours(origin_access_km, origin.lat)
+    destination_access_hours = airport_access_hours(destination_access_km, lat)
+    direct_service = origin_code in DIRECT_AIRPORTS and destination_code in DIRECT_AIRPORTS
+    connection_hours = 0.0 if direct_service else 1.35
+    terminal_hours = 1.0 if direct_service else 1.25
+    flight_hours = airport_distance_km / 820
+    total_hours = terminal_hours + origin_access_hours + flight_hours + connection_hours + destination_access_hours
+
+    if destination_airport["remote"] or destination_access_km > 100 or lat >= 58:
+        mode = "Air + remote access"
+    elif direct_service:
+        mode = "Direct flight + ground"
+    else:
+        mode = "Connecting flight + ground"
+
+    return mode, total_hours
+
+
 def estimate_travel(origin: Place, lat: float, lon: float) -> TravelEstimate:
     distance_km = haversine_km(origin.lat, origin.lon, lat, lon)
-    access_penalty = region_access_penalty(lat, lon)
     candidates: list[tuple[str, float]] = []
 
     if lat <= 61.5:
@@ -212,10 +283,9 @@ def estimate_travel(origin: Place, lat: float, lon: float) -> TravelEstimate:
         rail_hours = 0.6 + (distance_km * 1.10) / 105
         candidates.append(("Rail + road", rail_hours))
 
-    if distance_km >= 650 or lat >= 55:
-        air_hours = 3.2 + distance_km / 760 + access_penalty
-        mode = "Air + remote access" if access_penalty >= 5.0 or lat >= 58 else "Air + ground"
-        candidates.append((mode, air_hours))
+    air_candidate = air_travel_candidate(origin, lat, lon, distance_km)
+    if air_candidate:
+        candidates.append(air_candidate)
 
     if not candidates:
         candidates.append(("Road", distance_km / 40))
@@ -236,7 +306,14 @@ def cell_polygon(lat: float, lon: float, step: float) -> list[list[float]]:
 
 
 @st.cache_data(show_spinner=False)
-def build_passage_cells(origin_name: str, origin_lat: float, origin_lon: float, step: float) -> pd.DataFrame:
+def build_passage_cells(
+    origin_name: str,
+    origin_lat: float,
+    origin_lon: float,
+    step: float,
+    time_band_version: str,
+) -> pd.DataFrame:
+    _ = time_band_version
     origin = Place(name=origin_name, lat=origin_lat, lon=origin_lon)
     rows = []
     lat = CANADA_BOUNDS["min_lat"]
@@ -364,7 +441,7 @@ def render_sidebar() -> dict[str, object]:
     resolution = st.sidebar.select_slider(
         "Resolution",
         options=["Coarse", "Standard", "Fine"],
-        value="Standard",
+        value="Fine",
     )
     step = {"Coarse": 1.25, "Standard": 0.85, "Fine": 0.55}[resolution]
 
@@ -373,6 +450,68 @@ def render_sidebar() -> dict[str, object]:
         "resolution": resolution,
         "step": step,
     }
+
+
+def color_to_css(color: list[int]) -> str:
+    return f"rgba({color[0]}, {color[1]}, {color[2]}, {color[3] / 255:.2f})"
+
+
+def render_time_band_legend(cells: pd.DataFrame) -> None:
+    band_counts = cells["band"].value_counts().to_dict()
+    swatches = []
+
+    for band in TIME_BANDS:
+        count = band_counts.get(band["label"], 0)
+        opacity = "1" if count else "0.35"
+        swatches.append(
+            f"""
+            <div class="time-band-item" style="opacity: {opacity};">
+                <span class="time-band-swatch" style="background: {color_to_css(band['color'])};"></span>
+                <span class="time-band-label">{band['label']}</span>
+                <span class="time-band-count">{count:,}</span>
+            </div>
+            """
+        )
+
+    st.markdown(
+        f"""
+        <style>
+            .time-band-grid {{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 7px 12px;
+                margin: 0.35rem 0 1rem;
+            }}
+            .time-band-item {{
+                display: grid;
+                grid-template-columns: 18px minmax(0, 1fr) auto;
+                align-items: center;
+                gap: 7px;
+                min-width: 0;
+                color: #2f2b24;
+                font-size: 0.86rem;
+                line-height: 1.15;
+            }}
+            .time-band-swatch {{
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                border: 1px solid rgba(47, 43, 36, 0.35);
+            }}
+            .time-band-label {{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }}
+            .time-band-count {{
+                color: #6b6256;
+                font-variant-numeric: tabular-nums;
+            }}
+        </style>
+        <div class="time-band-grid">{''.join(swatches)}</div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_context(cells: pd.DataFrame, city_estimates: pd.DataFrame) -> None:
@@ -398,7 +537,8 @@ def render_context(cells: pd.DataFrame, city_estimates: pd.DataFrame) -> None:
 
     left, right = st.columns([1, 1])
     with left:
-        st.subheader("Time Bands")
+        st.subheader("Time Band Legend")
+        render_time_band_legend(cells)
         st.dataframe(
             pd.DataFrame(
                 [
@@ -435,7 +575,7 @@ def main() -> None:
     controls = render_sidebar()
     origin = controls["origin"]
 
-    cells = build_passage_cells(origin.name, origin.lat, origin.lon, controls["step"])
+    cells = build_passage_cells(origin.name, origin.lat, origin.lon, controls["step"], TIME_BAND_VERSION)
     city_estimates = build_city_estimates(origin)
 
     top_row = st.columns([2, 1, 1, 1])
