@@ -359,6 +359,22 @@ def build_city_estimates(origin: Place) -> pd.DataFrame:
     return pd.DataFrame(rows).sort_values("hours")
 
 
+def build_city_label_frame() -> pd.DataFrame:
+    rows = []
+    for name, (lat, lon) in CANADIAN_LOCATIONS.items():
+        city = name.split(",")[0]
+        rows.append(
+            {
+                "name": name,
+                "label": city,
+                "lat": lat,
+                "lon": lon,
+                "size": 15 if name in {"Toronto, ON", "Montreal, QC", "Vancouver, BC", "Calgary, AB"} else 13,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
     origin_df = pd.DataFrame(
         [
@@ -369,6 +385,7 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
             }
         ]
     )
+    city_df = build_city_label_frame()
 
     layers = [
         pdk.Layer(
@@ -382,6 +399,29 @@ def make_map(origin: Place, cells: pd.DataFrame) -> pdk.Deck:
             pickable=True,
             stroked=True,
             filled=True,
+        ),
+        pdk.Layer(
+            "ScatterplotLayer",
+            data=city_df,
+            get_position="[lon, lat]",
+            get_radius=23000,
+            get_fill_color=[47, 43, 36, 220],
+            get_line_color=[255, 255, 255, 230],
+            line_width_min_pixels=1,
+            stroked=True,
+            pickable=False,
+        ),
+        pdk.Layer(
+            "TextLayer",
+            data=city_df,
+            get_position="[lon, lat]",
+            get_text="label",
+            get_size="size",
+            get_color=[35, 31, 27, 240],
+            get_text_anchor='"middle"',
+            get_alignment_baseline='"bottom"',
+            get_pixel_offset=[0, -10],
+            pickable=False,
         ),
         pdk.Layer(
             "ScatterplotLayer",
